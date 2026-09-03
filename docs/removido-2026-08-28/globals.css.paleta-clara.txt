@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f8e9ec;
+  --color-blush-50: #fcf3f5;
+  --color-blush-100: #f2dbe1;
+  --color-blush-200: #ebc9d1;
+  --color-blush-300: #d8a5b1;
+  --color-wine: #7a1018;
+  --color-wine-soft: #851b24;
+  --color-wine-deep: #560a10;
+  --color-accent: #a86e7b;
+  --color-ink: #3a1a20;
+  --color-muted: #75505b;
+
+  --font-display: var(--font-cormorant);
+  --font-script: var(--font-parisienne);
+  --font-sans: var(--font-jost);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-blush-200);
+    color: var(--color-wine-deep);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+  }
+
+  .section {
+    @apply py-20 sm:py-28;
+  }
+
+  .eyebrow {
+    @apply text-[0.68rem] font-medium uppercase tracking-[0.34em] text-wine-soft;
+  }
+
+  .eyebrow-light {
+    @apply text-[0.68rem] font-medium uppercase tracking-[0.34em] text-blush-200;
+  }
+
+  .small-caps {
+    @apply text-[0.62rem] font-medium uppercase tracking-[0.42em];
+  }
+
+  .title-xl {
+    @apply text-4xl leading-[1.08] sm:text-5xl lg:text-6xl;
+  }
+
+  .title-lg {
+    @apply text-3xl leading-[1.12] sm:text-4xl lg:text-[2.75rem];
+  }
+
+  .lead {
+    @apply text-base leading-relaxed text-muted sm:text-lg;
+  }
+
+  .btn-primary,
+  .btn-outline,
+  .btn-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-medium tracking-wide transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply bg-wine text-blush-50 hover:bg-wine-deep hover:shadow-lg hover:shadow-wine/20;
+  }
+
+  .btn-outline {
+    @apply border border-wine/30 text-wine hover:border-wine hover:bg-wine hover:text-blush-50;
+  }
+
+  .btn-light {
+    @apply bg-blush-100 text-wine hover:bg-blush-200;
+  }
+
+  .card {
+    @apply rounded-2xl border border-blush-200/70 bg-blush-50/80 p-8 backdrop-blur-sm;
+  }
+
+  .input-base {
+    @apply w-full rounded-xl border border-blush-300/60 bg-blush-50 px-4 py-3 text-sm text-ink transition-colors placeholder:text-muted/50 focus:border-wine focus:outline-none focus:ring-2 focus:ring-wine/15;
+  }
+
+  .label-base {
+    @apply mb-2 block text-xs font-medium uppercase tracking-[0.14em] text-muted;
+  }
+
+  .rule-soft {
+    @apply mx-auto h-px w-16 bg-accent/40;
+  }
+}

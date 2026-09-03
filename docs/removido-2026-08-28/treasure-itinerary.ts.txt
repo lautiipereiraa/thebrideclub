@@ -1,0 +1,48 @@
+import type { ItineraryStop } from "@/types/travel";
+
+export const treasureItinerary: ItineraryStop[] = [
+  {
+    id: "pistach",
+    moment: "Aperitivo",
+    place: "Pistach'",
+    description:
+      "Ambiente moderno y elegante, cocina ítalo-francesa con productos regionales. El trago de bienvenida y algo para picar: agnolotti de trucha, calamares.",
+    challenge:
+      "Maridar a ciegas una copa de espumante con dos tapeos distintos y adivinar cuál va con cuál.",
+  },
+  {
+    id: "tinto-bistro",
+    moment: "Entrada",
+    place: "Tinto Bistró",
+    description:
+      "De Máximo Zorreguieta. Cocina de autor con productos locales de primera calidad, técnicas innovadoras y sabor patagónico, con una carta de vinos excelente.",
+    challenge:
+      "Cata a ciegas de dos vinos patagónicos, uno tinto y uno blanco: el grupo vota cuál es cuál.",
+  },
+  {
+    id: "delfina",
+    moment: "Plato principal",
+    place: "Delfina, Bahía Manzano",
+    description:
+      "Vista al Nahuel Huapi y platos como el tortellini de cordero en su jugo, en un entorno pintoresco frente al lago.",
+    challenge: "Trivia sobre la novia y brindis con vista al atardecer.",
+  },
+  {
+    id: "postre",
+    moment: "Postre o té",
+    place: "Casita de La Oma o Antibes",
+    description:
+      "El cierre dulce en un ambiente más íntimo, tipo afternoon tea. Es la parada ideal si el recorrido es de día.",
+    challenge:
+      "Se puede saltear si el grupo prefiere ir directo a la noche.",
+  },
+  {
+    id: "cierre",
+    moment: "Cierre",
+    place: "Correntoso o Las Balsas",
+    description:
+      "El trago final en un lugar con historia y vistas privilegiadas, ideal si el grupo se aloja cerca.",
+    challenge:
+      "La entrega del tesoro: el regalo simbólico, la corona o la banda que las amigas prepararon de antemano.",
+  },
+];

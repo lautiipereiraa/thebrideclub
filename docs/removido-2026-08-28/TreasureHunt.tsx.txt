@@ -1,0 +1,34 @@
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { TreasureStop } from "@/components/home/TreasureStop";
+import { treasureItinerary } from "@/data/treasure-itinerary";
+
+export function TreasureHunt() {
+  return (
+    <section id="tesoro" className="section bg-wine text-blush-50">
+      <div className="container-page">
+        <SectionHeading
+          eyebrow="Experiencia insignia"
+          title="El Tesoro de la Novia"
+          description="Un recorrido gastronómico por Villa La Angostura convertido en juego: cuatro o cinco paradas, un plato o un trago en cada una, y un desafío que da la pista de la siguiente."
+          tone="light"
+        />
+
+        <div className="mx-auto mt-10 flex max-w-2xl flex-wrap justify-center gap-x-10 gap-y-3 text-center text-sm text-blush-100">
+          <p>Duración aproximada: 3 a 3.5 horas</p>
+          <p>Aperitivo · entrada · plato · postre · cierre</p>
+        </div>
+
+        <ol className="mx-auto mt-16 max-w-3xl space-y-12">
+          {treasureItinerary.map((stop, index) => (
+            <TreasureStop
+              key={stop.id}
+              stop={stop}
+              index={index}
+              isLast={index === treasureItinerary.length - 1}
+            />
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,58 @@
+# valen · compose de DESARROLLO (el único que existe hoy).
+#   docker compose up -d --build
+#
+# Monolito Next.js: un solo servicio. Cuando haga falta base de datos se agrega
+# un servicio `postgres` acá y listo — no hay backend aparte.
+#
+# Se llega de dos formas:
+#   1. https://tesis.148-113-167-40.sslip.io → por Traefik, puerto 443, con
+#      certificado válido. Es la que usa Valen: 443 pasa en cualquier red, los
+#      puertos altos no siempre. sslip.io resuelve solo a la IP del server, así
+#      que no hace falta tocar DNS ni el dominio usdzhin.com.ar.
+#   2. http://148.113.167.40:3005 → puerto publicado directo. Sirve para probar
+#      desde el propio server; desde afuera puede venir filtrado.
+
+name: valen-dev
+
+services:
+  web:
+    image: valen-web-dev
+    build:
+      context: .
+      target: dev
+      args:
+        UID: ${UID:-1001}
+        GID: ${GID:-1001}
+    container_name: valen-web
+    environment:
+      NODE_ENV: development
+      # Orígenes extra que el dev server de Next acepta (IP o dominio del
+      # servidor). Va por entorno para no hardcodear la infra en el repo.
+      EXTRA_DEV_ORIGINS: ${EXTRA_DEV_ORIGINS:-}
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "${BIND_HOST:-127.0.0.1}:${WEB_PORT:-3005}:3000"
+    networks: [default, edge]
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: edge
+      traefik.http.routers.valen.entrypoints: websecure
+      # Dos escrituras del mismo nombre: con guiones y con puntos. sslip.io acepta
+      # las dos, y la del medio (puntos) es la que sale natural al copiar una IP.
+      # Si el cert no cubre la que se tipeo, el navegador la bloquea con la pantalla
+      # roja de "conexion no privada" — por eso van ambas en la regla.
+      traefik.http.routers.valen.rule: Host(`${PUBLIC_HOST:-tesis.148-113-167-40.sslip.io}`) || Host(`${PUBLIC_HOST_ALT:-tesis.148.113.167.40.sslip.io}`)
+      traefik.http.routers.valen.tls: "true"
+      traefik.http.routers.valen.tls.certresolver: le
+      traefik.http.services.valen.loadbalancer.server.port: "3000"
+    restart: unless-stopped
+
+networks:
+  edge:
+    external: true
+
+volumes:
+  node_modules:
+    name: valen-node-modules
