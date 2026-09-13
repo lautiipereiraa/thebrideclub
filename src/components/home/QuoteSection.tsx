@@ -3,7 +3,7 @@ import { QuoteForm } from "@/components/home/QuoteForm";
 
 export function QuoteSection() {
   return (
-    <section id="cotizar" className="section bg-blush-200">
+    <section id="cotizar" className="section bg-tone-300">
       <div className="container-page">
         <SectionHeading
           eyebrow="Pedir cotización"

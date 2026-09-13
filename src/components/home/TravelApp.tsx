@@ -31,12 +31,12 @@ const features = [
 
 export function TravelApp() {
   return (
-    <section id="app" className="section bg-cream">
+    <section id="app" className="section bg-tone-100">
       <div className="container-page">
-        <div className="overflow-hidden rounded-3xl border border-blush-200 bg-gradient-to-br from-blush-100 via-blush-50 to-cream">
+        <div className="overflow-hidden rounded-3xl border border-tone-300 bg-tone-200">
           <div className="grid gap-10 p-10 sm:p-14 lg:grid-cols-2 lg:gap-16">
             <div>
-              <p className="eyebrow">Exclusivo de Antes del velo</p>
+              <p className="eyebrow">Exclusivo de The Bride Club</p>
               <h2 className="title-lg mt-4 text-wine-deep">La app del viaje</h2>
               <p className="lead mt-6">
                 Va incluida en el presupuesto, sin costo aparte. Cada amiga entra con
@@ -71,7 +71,7 @@ export function TravelApp() {
             <div className="lg:pt-4">
               <p className="small-caps text-accent">Así se ve la caja</p>
 
-              <div className="mt-5 rounded-2xl border border-blush-200 bg-blush-50 p-8 shadow-lg shadow-blush-200/40">
+              <div className="mt-5 rounded-2xl border border-tone-300 bg-tone-50 p-8 shadow-lg shadow-tone-300/40">
                 <div className="flex items-baseline justify-between">
                   <p className="font-display text-2xl font-medium text-wine">
                     Las de Juli
@@ -88,7 +88,7 @@ export function TravelApp() {
                       62%
                     </span>
                   </div>
-                  <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-blush-100">
+                  <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-tone-200">
                     <div className="h-full w-[62%] rounded-full bg-gradient-to-r from-wine-soft to-wine" />
                   </div>
                 </div>
@@ -102,7 +102,7 @@ export function TravelApp() {
                   ].map((row) => (
                     <li
                       key={row.name}
-                      className="flex items-center justify-between border-b border-blush-100 pb-3 last:border-0"
+                      className="flex items-center justify-between border-b border-tone-200 pb-3 last:border-0"
                     >
                       <span className="text-ink">{row.name}</span>
                       <span className={row.done ? "text-wine-soft" : "text-muted"}>

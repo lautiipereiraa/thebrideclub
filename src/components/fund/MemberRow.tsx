@@ -31,13 +31,13 @@ export function MemberRow({
   }
 
   return (
-    <li className="rounded-2xl border border-blush-200 bg-blush-50 p-6">
+    <li className="rounded-2xl border border-tone-300 bg-tone-50 p-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <p className="font-display text-2xl font-medium text-wine">{member.name}</p>
             {settled ? (
-              <span className="flex items-center gap-1 rounded-full bg-blush-100 px-3 py-1 text-[0.65rem] uppercase tracking-[0.14em] text-wine">
+              <span className="flex items-center gap-1 rounded-full bg-tone-200 px-3 py-1 text-[0.65rem] uppercase tracking-[0.14em] text-wine-deep">
                 <Check size={11} strokeWidth={2} />
                 Al día
               </span>
@@ -53,15 +53,15 @@ export function MemberRow({
           type="button"
           aria-label={`Sacar a ${member.name}`}
           onClick={() => onRemove(member.id)}
-          className="text-blush-300 transition-colors hover:text-wine"
+          className="text-tone-400 transition-colors hover:text-wine"
         >
           <Trash2 size={16} strokeWidth={1.5} />
         </button>
       </div>
 
-      <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-blush-50">
+      <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-tone-50">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-blush-300 to-wine transition-all duration-500"
+          className="h-full rounded-full bg-gradient-to-r from-tone-400 to-wine transition-all duration-500"
           style={{ width: `${Math.min(100, percent)}%` }}
         />
       </div>

@@ -1,5 +1,3 @@
-import { LuggageTagIcon } from "@/components/ui/LuggageTagIcon";
-
 interface BrandLogoProps {
   size?: "sm" | "md" | "lg";
   tone?: "wine" | "light";
@@ -7,16 +5,10 @@ interface BrandLogoProps {
   withCaptions?: boolean;
 }
 
-const scriptSizes = {
-  sm: "text-[1.7rem]",
-  md: "text-5xl",
-  lg: "text-[3.5rem] sm:text-7xl lg:text-8xl",
-};
-
-const tagSizes = {
-  sm: "h-5",
-  md: "h-9",
-  lg: "h-11 sm:h-14 lg:h-16",
+const wordmarkSizes = {
+  sm: "text-[1.05rem]",
+  md: "text-3xl",
+  lg: "text-[2.6rem] sm:text-6xl lg:text-7xl",
 };
 
 const captionSizes = {
@@ -31,42 +23,32 @@ export function BrandLogo({
   layout = "stacked",
   withCaptions = true,
 }: BrandLogoProps) {
-  const color = tone === "light" ? "text-blush-100" : "text-wine";
-  const captionColor = tone === "light" ? "text-blush-200/80" : "text-wine/55";
+  const color = tone === "light" ? "text-tone-200" : "text-wine";
+  const captionColor = tone === "light" ? "text-tone-300" : "text-wine/70";
+  const wordmark = `font-logo font-black uppercase leading-[0.82] tracking-[-0.015em] ${wordmarkSizes[size]}`;
 
   if (layout === "inline") {
     return (
-      <span className={`flex items-end gap-2 ${color}`}>
-        <span className={`font-script leading-none ${scriptSizes[size]}`}>
-          Antes del velo
-        </span>
-        <LuggageTagIcon className={`${tagSizes[size]} w-auto opacity-75`} />
-      </span>
+      <span className={`${wordmark} ${color}`}>The Bride Club</span>
     );
   }
 
   return (
     <div className={`flex flex-col items-center ${color}`}>
       {withCaptions ? (
-        <p className={`${captionSizes[size]} uppercase ${captionColor}`}>
+        <p className={`${captionSizes[size]} font-medium uppercase ${captionColor}`}>
           Agencia de viajes
         </p>
       ) : null}
 
-      <div className={withCaptions ? "mt-4" : ""}>
-        <p className={`font-script text-center leading-[0.9] ${scriptSizes[size]}`}>
-          Antes
-        </p>
-        <div className="mt-1 flex items-end justify-center gap-3">
-          <p className={`font-script leading-[0.95] ${scriptSizes[size]}`}>
-            del velo
-          </p>
-          <LuggageTagIcon className={`${tagSizes[size]} w-auto opacity-75`} />
-        </div>
-      </div>
+      <p className={`${wordmark} mt-5 text-center`}>
+        The
+        <br />
+        Bride Club
+      </p>
 
       {withCaptions ? (
-        <p className={`mt-5 ${captionSizes[size]} uppercase ${captionColor}`}>
+        <p className={`mt-6 ${captionSizes[size]} font-medium uppercase ${captionColor}`}>
           Despedidas de soltera
         </p>
       ) : null}

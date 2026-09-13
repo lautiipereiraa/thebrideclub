@@ -14,24 +14,24 @@ export function TierCard({ tier }: TierCardProps) {
     <article
       className={`relative flex h-full flex-col rounded-2xl border p-9 transition-all duration-300 ${
         featured
-          ? "border-wine bg-wine text-blush-50 shadow-xl shadow-wine/20 lg:-translate-y-4"
-          : "border-blush-200 bg-blush-50 hover:border-wine/30"
+          ? "border-wine bg-wine text-tone-50 shadow-xl shadow-wine/20 lg:-translate-y-4"
+          : "border-tone-300 bg-tone-50 hover:border-wine/30"
       }`}
     >
       {featured ? (
-        <span className="absolute -top-3 left-9 rounded-full bg-blush-200 px-4 py-1 text-[0.62rem] uppercase tracking-[0.28em] text-wine">
+        <span className="absolute -top-3 left-9 rounded-full bg-tone-300 px-4 py-1 text-[0.62rem] uppercase tracking-[0.28em] text-wine-deep">
           El más elegido
         </span>
       ) : null}
 
       <h3
-        className={`font-display text-3xl ${featured ? "text-blush-50" : "text-wine"}`}
+        className={`font-display text-3xl ${featured ? "text-tone-50" : "text-wine"}`}
       >
         {tier.name}
       </h3>
       <p
         className={`mt-3 text-sm leading-relaxed ${
-          featured ? "text-blush-100" : "text-muted"
+          featured ? "text-tone-50" : "text-muted"
         }`}
       >
         {tier.positioning}
@@ -39,12 +39,12 @@ export function TierCard({ tier }: TierCardProps) {
 
       <div
         className={`mt-7 border-t pt-6 ${
-          featured ? "border-blush-50/20" : "border-blush-100"
+          featured ? "border-tone-50/20" : "border-tone-200"
         }`}
       >
         <p
           className={`text-[0.7rem] uppercase tracking-[0.14em] ${
-            featured ? "text-blush-100" : "text-muted"
+            featured ? "text-tone-50" : "text-muted"
           }`}
         >
           Desde
@@ -53,7 +53,7 @@ export function TierCard({ tier }: TierCardProps) {
           {formatUsd(tier.fromPrice)}
           <span
             className={`ml-2 font-sans text-xs ${
-              featured ? "text-blush-100" : "text-muted"
+              featured ? "text-tone-50" : "text-muted"
             }`}
           >
             por persona
@@ -67,9 +67,9 @@ export function TierCard({ tier }: TierCardProps) {
             <Check
               size={16}
               strokeWidth={1.75}
-              className={`mt-0.5 shrink-0 ${featured ? "text-blush-200" : "text-accent"}`}
+              className={`mt-0.5 shrink-0 ${featured ? "text-tone-100" : "text-accent"}`}
             />
-            <span className={featured ? "text-blush-100" : "text-ink"}>
+            <span className={featured ? "text-tone-50" : "text-ink"}>
               {item}
             </span>
           </li>

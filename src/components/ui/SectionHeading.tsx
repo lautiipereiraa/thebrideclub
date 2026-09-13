@@ -19,13 +19,13 @@ export function SectionHeading({
     <div className={isCentered ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       <p className={tone === "light" ? "eyebrow-light" : "eyebrow"}>{eyebrow}</p>
       <h2
-        className={`title-lg mt-4 ${tone === "light" ? "text-blush-50" : "text-wine-deep"}`}
+        className={`title-lg mt-4 ${tone === "light" ? "text-tone-50" : "text-wine-deep"}`}
       >
         {title}
       </h2>
       {description ? (
         <p
-          className={`mt-5 ${tone === "light" ? "text-base leading-relaxed text-blush-100 sm:text-lg" : "lead"}`}
+          className={`mt-5 ${tone === "light" ? "text-base leading-relaxed text-tone-200 sm:text-lg" : "lead"}`}
         >
           {description}
         </p>

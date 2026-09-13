@@ -33,7 +33,7 @@ export function FundSetupForm({ onCreate }: FundSetupFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-blush-200 bg-blush-50 p-8 sm:p-12"
+      className="rounded-2xl border border-tone-300 bg-tone-50 p-8 sm:p-12"
     >
       <h2 className="font-display text-3xl text-wine-deep">
         Armemos la caja del grupo

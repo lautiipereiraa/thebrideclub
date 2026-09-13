@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <title>The Bride Club</title>
+  <rect width="100" height="100" rx="20" fill="#9e1a20"/>
+  <g transform="translate(3.6 5.7) scale(0.882)">
+    <path
+      d="M16 12 L58 12 C74 12 85 20 85 31 C85 40 79 46 69 48 C81 50 90 57 90 68 C90 81 79 88 61 88 L16 88 L16 83 L28 83 L28 17 L16 17 Z M50 24 L56 24 C64 24 70 27 70 32 C70 37 64 40 56 40 L50 40 Z M50 57 L58 57 C68 57 75 62 75 69 C75 76 68 79 58 79 L50 79 Z"
+      fill="#eac6d0"
+      fill-rule="evenodd"/>
+  </g>
+</svg>

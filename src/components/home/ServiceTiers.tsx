@@ -4,7 +4,7 @@ import { serviceTiers } from "@/data/service-tiers";
 
 export function ServiceTiers() {
   return (
-    <section id="niveles" className="section bg-cream">
+    <section id="niveles" className="section bg-tone-100">
       <div className="container-page">
         <SectionHeading
           eyebrow="Niveles de servicio"

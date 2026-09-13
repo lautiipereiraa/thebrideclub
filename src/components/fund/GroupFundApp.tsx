@@ -17,7 +17,7 @@ export function GroupFundApp() {
 
   if (!ready) {
     return (
-      <div className="rounded-2xl border border-blush-200 bg-blush-50 p-12 text-center text-sm text-muted">
+      <div className="rounded-2xl border border-tone-300 bg-tone-50 p-12 text-center text-sm text-muted">
         Cargando la caja...
       </div>
     );

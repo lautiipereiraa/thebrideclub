@@ -34,7 +34,7 @@ export function FundDashboard({
         </div>
 
         {fund.members.length === 0 ? (
-          <p className="mt-8 rounded-2xl border border-dashed border-blush-300 bg-blush-50 p-10 text-center text-sm text-muted">
+          <p className="mt-8 rounded-2xl border border-dashed border-tone-400 bg-tone-50 p-10 text-center text-sm text-muted">
             Todavía no hay nadie en la caja. Agregá a las amigas del grupo para empezar.
           </p>
         ) : (
@@ -52,7 +52,7 @@ export function FundDashboard({
         )}
       </div>
 
-      <div className="border-t border-blush-200 pt-8">
+      <div className="border-t border-tone-300 pt-8">
         <button
           type="button"
           onClick={onReset}

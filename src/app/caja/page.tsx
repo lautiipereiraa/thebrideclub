@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { GroupFundApp } from "@/components/fund/GroupFundApp";
 
 export const metadata: Metadata = {
-  title: "La caja del grupo · Antes del velo",
+  title: "La caja del grupo · The Bride Club",
   description:
-    "La herramienta de Antes del velo para que cada amiga pague su parte del viaje por separado y todas vean cuánto falta.",
+    "La herramienta de The Bride Club para que cada amiga pague su parte del viaje por separado y todas vean cuánto falta.",
 };
 
 export default function GroupFundPage() {
   return (
-    <main className="flex-1 bg-cream">
-      <section className="border-b border-blush-200 bg-gradient-to-b from-blush-200 to-cream">
+    <main className="flex-1 bg-tone-100">
+      <section className="border-b border-tone-300 bg-tone-100">
         <div className="container-page py-20 sm:py-24">
           <p className="eyebrow">Una función de la app del viaje</p>
           <h1 className="title-xl mt-4 max-w-3xl text-wine-deep">
