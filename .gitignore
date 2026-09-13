@@ -42,3 +42,6 @@ next-env.d.ts
 
 # backups
 *.bak
+
+# notas de trabajo (no van al repo)
+/docs/
