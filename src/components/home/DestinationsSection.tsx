@@ -8,25 +8,21 @@ export function DestinationsSection() {
   const count = spellOut(destinations.length);
 
   return (
-    <section id="destinos" className="section bg-blush-200">
+    <section id="destinos" className="section bg-tone-300">
       <div className="container-page">
         <SectionHeading
           eyebrow="Nuestros productos"
           title={`${capitalize(count)} destinos, ${count} formas de despedirse`}
-          description="Cada producto está armado de punta a punta: alojamiento, traslados, gastronomía y experiencias. ¿Tienen otro destino en la cabeza? Lo cotizamos igual."
+          description="Cada uno armado de punta a punta: alojamiento, traslados, gastronomía y experiencias."
         />
 
         <div className="mt-16 space-y-8">
-          {destinations.map((destination, index) => (
-            <DestinationCard
-              key={destination.id}
-              destination={destination}
-              index={index}
-            />
+          {destinations.map((destination) => (
+            <DestinationCard key={destination.id} destination={destination} />
           ))}
         </div>
 
-        <div className="mt-14 rounded-2xl border border-dashed border-wine/25 bg-cream px-8 py-10 text-center">
+        <div className="mt-14 rounded-2xl border border-dashed border-wine/25 bg-tone-100 px-8 py-10 text-center">
           <h3 className="font-display text-2xl text-wine-deep">
             ¿El destino que quieren no está acá?
           </h3>

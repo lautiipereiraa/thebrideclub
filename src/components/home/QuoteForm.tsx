@@ -4,14 +4,14 @@ import { useState } from "react";
 import { Check, Send } from "lucide-react";
 import { destinations } from "@/data/destinations";
 import { serviceTiers } from "@/data/service-tiers";
-import { travelStyles } from "@/data/travel-styles";
+import { experiences } from "@/data/experiences";
 
 export function QuoteForm() {
   const [sent, setSent] = useState(false);
-  const [styles, setStyles] = useState<string[]>([]);
+  const [chosen, setChosen] = useState<string[]>([]);
 
-  function toggleStyle(id: string) {
-    setStyles((current) =>
+  function toggleExperience(id: string) {
+    setChosen((current) =>
       current.includes(id)
         ? current.filter((value) => value !== id)
         : [...current, id],
@@ -25,8 +25,8 @@ export function QuoteForm() {
 
   if (sent) {
     return (
-      <div className="rounded-2xl border border-blush-200 bg-blush-50 p-12 text-center">
-        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blush-100 text-wine">
+      <div className="rounded-2xl border border-tone-300 bg-tone-50 p-12 text-center">
+        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-tone-200 text-wine-deep">
           <Check size={26} strokeWidth={1.5} />
         </span>
         <h3 className="mt-6 font-display text-3xl text-wine-deep">
@@ -50,7 +50,7 @@ export function QuoteForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-blush-200 bg-blush-50 p-8 sm:p-12"
+      className="rounded-2xl border border-tone-300 bg-tone-50 p-8 sm:p-12"
     >
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
@@ -156,22 +156,22 @@ export function QuoteForm() {
       </div>
 
       <div className="mt-8">
-        <p className="label-base">Estilo del viaje</p>
+        <p className="label-base">Tipo de experiencia</p>
         <div className="flex flex-wrap gap-3">
-          {travelStyles.map((style) => {
-            const active = styles.includes(style.id);
+          {experiences.map((experience) => {
+            const active = chosen.includes(experience.id);
             return (
               <button
-                key={style.id}
+                key={experience.id}
                 type="button"
-                onClick={() => toggleStyle(style.id)}
+                onClick={() => toggleExperience(experience.id)}
                 className={`rounded-full border px-5 py-2 text-sm transition-all duration-200 ${
                   active
-                    ? "border-wine bg-wine text-blush-50"
-                    : "border-blush-200 text-muted hover:border-wine/40 hover:text-wine"
+                    ? "border-wine bg-wine text-tone-50"
+                    : "border-tone-400 text-muted hover:border-wine/40 hover:text-wine"
                 }`}
               >
-                {style.name}
+                {experience.name}
               </button>
             );
           })}
@@ -187,13 +187,13 @@ export function QuoteForm() {
           name="message"
           rows={4}
           className="input-base resize-none"
-          placeholder="Presupuesto que manejan por persona, si la novia sabe o es sorpresa, cosas que no pueden faltar..."
+          placeholder="Presupuesto por persona, si la novia sabe o es sorpresa, cosas que no pueden faltar..."
         />
       </div>
 
       <button type="submit" className="btn-primary mt-8 w-full sm:w-auto">
         <Send size={16} strokeWidth={1.5} />
-        Enviar consulta
+        Crear mi despedida
       </button>
 
       <p className="mt-4 text-xs text-muted">

@@ -1,56 +1,58 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { destinations } from "@/data/destinations";
-import { serviceTiers } from "@/data/service-tiers";
+import { experiences } from "@/data/experiences";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blush-200 via-blush-100 to-cream" />
-      <div className="absolute -right-40 -top-40 -z-10 h-[30rem] w-[30rem] rounded-full bg-blush-50/60 blur-3xl" />
-      <div className="absolute -left-48 top-52 -z-10 h-[26rem] w-[26rem] rounded-full bg-blush-50/50 blur-3xl" />
+    <section className="relative">
+      <Image
+        src="/fotos/hero.jpg"
+        alt="Tres amigas mirando el mar durante un viaje"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-wine-deep/70" />
 
-      <div className="container-page flex min-h-[calc(100vh-5rem)] flex-col items-center justify-center py-24 text-center">
-        <BrandLogo size="lg" />
+      <div className="container-page relative flex min-h-[calc(100vh-5rem)] flex-col items-center justify-center py-24 text-center">
+        <BrandLogo size="lg" tone="light" />
 
-        <div className="mt-14 h-px w-20 bg-wine/20" />
-
-        <h1 className="title-lg mt-12 max-w-3xl text-wine-deep">
-          El último viaje de soltera,
-          <span className="block font-display italic text-wine">
-            organizado hasta el último detalle.
-          </span>
+        <h1 className="title-lg mt-12 max-w-3xl text-tone-50">
+          Tu despedida de soltera, convertida en una experiencia inolvidable.
         </h1>
 
-        <p className="lead mt-8 max-w-xl">
-          Ustedes eligen el destino y el estilo, nosotras nos ocupamos del resto.
+        <p className="mt-7 max-w-xl text-base leading-relaxed text-tone-200 sm:text-lg">
+          Diseñamos viajes personalizados para celebrar a la novia junto a sus amigas.
         </p>
 
-        <div className="mt-11 flex flex-col gap-3 sm:flex-row">
-          <Link href="#destinos" className="btn-primary">
-            Ver destinos
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <Link href="#cotizar" className="btn-primary">
+            Diseñar mi experiencia
           </Link>
-          <Link href="#cotizar" className="btn-outline">
-            Cotizar nuestro viaje
+          <Link href="#destinos" className="btn-light">
+            Ver destinos
           </Link>
         </div>
 
-        <dl className="mt-20 grid w-full max-w-xl grid-cols-3 gap-8 border-t border-wine/12 pt-9">
+        <dl className="mt-20 grid w-full max-w-lg grid-cols-3 gap-8 border-t border-tone-50/25 pt-9">
           <div>
-            <dt className="small-caps text-muted">Destinos</dt>
-            <dd className="mt-2 font-display text-3xl font-medium text-wine">
+            <dt className="small-caps text-tone-300">Destinos</dt>
+            <dd className="mt-2 font-display text-3xl font-medium text-tone-50">
               {destinations.length}
             </dd>
           </div>
           <div>
-            <dt className="small-caps text-muted">Niveles</dt>
-            <dd className="mt-2 font-display text-3xl font-medium text-wine">
-              {serviceTiers.length}
+            <dt className="small-caps text-tone-300">Experiencias</dt>
+            <dd className="mt-2 font-display text-3xl font-medium text-tone-50">
+              {experiences.length}
             </dd>
           </div>
           <div>
-            <dt className="small-caps text-muted">Asistencia</dt>
-            <dd className="mt-2 font-display text-3xl font-medium text-wine">24/7</dd>
+            <dt className="small-caps text-tone-300">Coordinación</dt>
+            <dd className="mt-2 font-display text-3xl font-medium text-tone-50">24/7</dd>
           </div>
         </dl>
       </div>

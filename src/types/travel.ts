@@ -5,15 +5,10 @@ export type TravelStyleId =
   | "aventura"
   | "naturaleza";
 
-export interface TravelStyle {
-  id: TravelStyleId;
-  name: string;
-  description: string;
-}
-
 export interface Destination {
   id: string;
   name: string;
+  photo: string;
   region: string;
   productName: string;
   focus: string;
@@ -24,7 +19,20 @@ export interface Destination {
   attractions: string[];
   experiences: string[];
   hotels?: string[];
-  gradient: string;
+}
+
+export type DestinationId = string;
+
+export interface Experience {
+  id: string;
+  name: string;
+  photo: string;
+  promise: string;
+  destinationIds: DestinationId[];
+  duration: string;
+  stay: string;
+  doing: string[];
+  bride: string;
 }
 
 export interface ServiceTier {

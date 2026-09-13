@@ -18,9 +18,19 @@ const problems = [
   },
 ];
 
+const differentials = [
+  "Viajes pensados exclusivamente para mujeres",
+  "Destinos nacionales e internacionales",
+  "Itinerario a medida, no un paquete estándar",
+  "Proveedores seleccionados uno por uno",
+  "Precio final por persona, sin sorpresas",
+  "Cada una paga por separado, en cuotas",
+  "Una coordinadora responde por el grupo entero",
+];
+
 export function PainPoint() {
   return (
-    <section id="experiencia" className="section bg-cream">
+    <section id="propuesta" className="section bg-tone-100">
       <div className="container-page">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           <div>
@@ -29,9 +39,8 @@ export function PainPoint() {
               Organizar una despedida termina siendo un trabajo de tiempo completo.
             </h2>
             <p className="lead mt-6">
-              Lo divertido es el viaje, no la logística. Hoy la organización cae sobre
-              una o dos amigas que terminan haciendo de agencia, de contadora y de
-              mediadora del grupo.
+              Lo divertido es el viaje, no la logística. Hoy todo cae sobre una o dos
+              amigas que terminan haciendo de agencia, de contadora y de mediadora.
             </p>
 
             <div className="mt-10 space-y-6">
@@ -54,33 +63,21 @@ export function PainPoint() {
           </div>
 
           <div className="relative">
-            <div className="sticky top-28 rounded-3xl bg-wine p-10 text-blush-50 sm:p-12">
+            <div className="sticky top-28 rounded-3xl bg-wine p-10 text-tone-50 sm:p-12">
               <p className="eyebrow-light">Nuestra propuesta</p>
-              <h3 className="title-lg mt-4 text-blush-50">
-                Un viaje diseñado para ustedes, con un solo precio por persona.
+              <h3 className="title-lg mt-4 text-tone-50">
+                Más que un viaje, una experiencia diseñada para ustedes.
               </h3>
-              <p className="mt-6 text-base leading-relaxed text-blush-100">
+              <p className="mt-6 text-base leading-relaxed text-tone-50">
                 No las acomodamos a un paquete ya armado: el itinerario se diseña
-                alrededor del grupo, de la novia y del presupuesto que manejan, y recién
-                ahí les damos un precio final por persona. Después cada amiga aporta su
-                parte cuando puede, y todas ven cuánto se juntó y cuánto falta.
+                alrededor del grupo, de la novia y del presupuesto que manejan.
               </p>
-              <ul className="mt-8 space-y-3 text-sm text-blush-100">
-                <li className="border-t border-blush-50/15 pt-3">
-                  Itinerario a medida, no un paquete estándar
-                </li>
-                <li className="border-t border-blush-50/15 pt-3">
-                  Precio final por persona, sin sorpresas
-                </li>
-                <li className="border-t border-blush-50/15 pt-3">
-                  Cada una paga por separado, en cuotas
-                </li>
-                <li className="border-t border-blush-50/15 pt-3">
-                  Una coordinadora responde por el grupo entero
-                </li>
-                <li className="border-t border-blush-50/15 pt-3">
-                  La novia no se entera de nada hasta que llega
-                </li>
+              <ul className="mt-8 space-y-3 text-sm text-tone-50">
+                {differentials.map((item) => (
+                  <li key={item} className="border-t border-tone-50/15 pt-3">
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

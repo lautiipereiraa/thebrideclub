@@ -6,10 +6,10 @@ import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
 const navLinks = [
-  { href: "/#experiencia", label: "La experiencia" },
+  { href: "/#nosotras", label: "Nosotras" },
+  { href: "/#experiencias", label: "Experiencias" },
   { href: "/#destinos", label: "Destinos" },
   { href: "/#niveles", label: "Niveles" },
-  { href: "/#extras", label: "Extras" },
   { href: "/caja", label: "La caja" },
 ];
 
@@ -30,12 +30,12 @@ export function SiteHeader() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-blush-200/70 bg-cream/90 backdrop-blur-md"
+          ? "border-b border-tone-300/70 bg-tone-100/90 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
       <div className="container-page flex h-20 items-center justify-between">
-        <Link href="/" onClick={() => setOpen(false)} aria-label="Antes del velo">
+        <Link href="/" onClick={() => setOpen(false)} aria-label="The Bride Club">
           <BrandLogo size="sm" layout="inline" />
         </Link>
 
@@ -50,7 +50,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link href="/#cotizar" className="btn-primary px-6 py-2.5">
-            Pedir cotización
+            Diseñar mi experiencia
           </Link>
         </nav>
 
@@ -65,14 +65,14 @@ export function SiteHeader() {
       </div>
 
       {open ? (
-        <nav className="border-t border-blush-200/70 bg-cream/95 backdrop-blur-md lg:hidden">
+        <nav className="border-t border-tone-300/70 bg-tone-100/95 backdrop-blur-md lg:hidden">
           <div className="container-page flex flex-col gap-1 py-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-3 text-sm text-muted transition-colors hover:bg-blush-50 hover:text-wine"
+                className="rounded-lg px-2 py-3 text-sm text-muted transition-colors hover:bg-tone-50 hover:text-wine"
               >
                 {link.label}
               </Link>
