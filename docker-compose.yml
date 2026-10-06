@@ -1,15 +1,16 @@
-# valen · compose de DESARROLLO (el único que existe hoy).
+# valen · compose de DESARROLLO.
 #   docker compose up -d --build
 #
 # Monolito Next.js + Postgres. No hay backend aparte: la app habla con la base
 # desde Server Components y Server Actions. La base guarda las consultas que
 # llegan por el formulario de cotizacion.
 #
+# Producción vive aparte, en ~/prod/valen (https://thebrideclub.com.ar), y corre
+# la imagen `runner` buildeada desde acá. Este stack es el de desarrollo.
+#
 # Se llega de dos formas:
-#   1. https://tesis.148-113-167-40.sslip.io → por Traefik, puerto 443, con
-#      certificado válido. Es la que usa Valen: 443 pasa en cualquier red, los
-#      puertos altos no siempre. sslip.io resuelve solo a la IP del server, así
-#      que no hace falta tocar DNS ni el dominio usdzhin.com.ar.
+#   1. https://dev.thebrideclub.com.ar → por Traefik, puerto 443, con
+#      certificado válido. Es la que usa Valen.
 #   2. http://148.113.167.40:3005 → puerto publicado directo. Sirve para probar
 #      desde el propio server; desde afuera puede venir filtrado.
 
@@ -41,17 +42,17 @@ services:
       - "${BIND_HOST:-127.0.0.1}:${WEB_PORT:-3005}:3000"
     networks: [default, edge]
     labels:
+      # Los nombres llevan sufijo -dev porque el stack de produccion
+      # (~/prod/valen) publica los suyos como `valen`. Dos contenedores
+      # declarando el MISMO nombre de router hacen que Traefik descarte los dos
+      # ("defined multiple times with different configurations").
       traefik.enable: "true"
       traefik.docker.network: edge
-      traefik.http.routers.valen.entrypoints: websecure
-      # Dos escrituras del mismo nombre: con guiones y con puntos. sslip.io acepta
-      # las dos, y la del medio (puntos) es la que sale natural al copiar una IP.
-      # Si el cert no cubre la que se tipeo, el navegador la bloquea con la pantalla
-      # roja de "conexion no privada" — por eso van ambas en la regla.
-      traefik.http.routers.valen.rule: Host(`${PUBLIC_HOST:-tesis.148-113-167-40.sslip.io}`) || Host(`${PUBLIC_HOST_ALT:-tesis.148.113.167.40.sslip.io}`)
-      traefik.http.routers.valen.tls: "true"
-      traefik.http.routers.valen.tls.certresolver: le
-      traefik.http.services.valen.loadbalancer.server.port: "3000"
+      traefik.http.routers.valen-dev.entrypoints: websecure
+      traefik.http.routers.valen-dev.rule: Host(`${PUBLIC_HOST:?definir PUBLIC_HOST en .env}`)
+      traefik.http.routers.valen-dev.tls: "true"
+      traefik.http.routers.valen-dev.tls.certresolver: le
+      traefik.http.services.valen-dev.loadbalancer.server.port: "3000"
     depends_on:
       db:
         condition: service_healthy

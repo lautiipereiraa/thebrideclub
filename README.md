@@ -12,10 +12,12 @@ docker compose up -d --build
 
 ## Cómo se accede
 
-- **https://tesis.148-113-167-40.sslip.io** — la URL real, la que se le pasa a
-  Valen. Va por el Traefik compartido de `~/infra/proxy` (puerto 443, certificado
-  de Let's Encrypt). `sslip.io` resuelve solo a la IP del server, así que no hubo
-  que tocar DNS ni el dominio `usdzhin.com.ar`.
+- **https://dev.thebrideclub.com.ar** — este stack de desarrollo, la URL que se
+  le pasa a Valen. Va por el Traefik compartido de `~/infra/proxy` (puerto 443,
+  certificado de Let's Encrypt). DNS en Cloudflare, registro en gris.
+- **https://thebrideclub.com.ar** — producción. No sale de acá: corre la imagen
+  `runner` en el stack de `~/prod/valen` (ver su `docker-compose.yml` para
+  buildear, promover y hacer rollback). Tiene su propia base de datos.
 - `http://148.113.167.40:3005` — puerto publicado directo. **Desde afuera viene
   filtrado**: sirve para probar desde el propio server y nada más. Por eso existe
   la ruta por Traefik.

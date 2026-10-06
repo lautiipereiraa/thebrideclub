@@ -17,8 +17,10 @@ Reglas de comunicación:
   razonable y contale en una línea qué hiciste. Preguntale solo cosas de **contenido
   y diseño**, que son las que ella sí puede decidir.
 - Después de cada cambio, decile **dónde mirarlo** y qué va a ver distinto. La URL
-  que se le pasa es **https://tesis.148-113-167-40.sslip.io** (nunca la del puerto
-  3005: ese puerto viene filtrado desde afuera).
+  que se le pasa es **https://dev.thebrideclub.com.ar** (nunca la del puerto
+  3005: ese puerto viene filtrado desde afuera). Los cambios NO llegan solos a
+  **https://thebrideclub.com.ar**, que es producción: se publican aparte (ver
+  `~/prod/valen/docker-compose.yml`), y solo cuando lo pide Lautaro.
 
 ## Qué es
 
