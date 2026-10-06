@@ -1,8 +1,9 @@
 # valen · compose de DESARROLLO (el único que existe hoy).
 #   docker compose up -d --build
 #
-# Monolito Next.js: un solo servicio. Cuando haga falta base de datos se agrega
-# un servicio `postgres` acá y listo — no hay backend aparte.
+# Monolito Next.js + Postgres. No hay backend aparte: la app habla con la base
+# desde Server Components y Server Actions. La base guarda las consultas que
+# llegan por el formulario de cotizacion.
 #
 # Se llega de dos formas:
 #   1. https://tesis.148-113-167-40.sslip.io → por Traefik, puerto 443, con
@@ -26,6 +27,10 @@ services:
     container_name: valen-web
     environment:
       NODE_ENV: development
+      DATABASE_URL: postgres://valen:${POSTGRES_PASSWORD}@db:5432/valen
+      # Usuario y clave para entrar a /consultas (el panel privado de Valen).
+      CONSULTAS_USER: ${CONSULTAS_USER}
+      CONSULTAS_PASSWORD: ${CONSULTAS_PASSWORD}
       # Orígenes extra que el dev server de Next acepta (IP o dominio del
       # servidor). Va por entorno para no hardcodear la infra en el repo.
       EXTRA_DEV_ORIGINS: ${EXTRA_DEV_ORIGINS:-}
@@ -47,6 +52,28 @@ services:
       traefik.http.routers.valen.tls: "true"
       traefik.http.routers.valen.tls.certresolver: le
       traefik.http.services.valen.loadbalancer.server.port: "3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: postgres:17-alpine
+    container_name: valen-db
+    environment:
+      POSTGRES_USER: valen
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: valen
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    # Sin `ports`: la base no se publica al host ni a internet. Solo la alcanza
+    # el servicio `web`, por la red interna de compose.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U valen -d valen"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     restart: unless-stopped
 
 networks:
@@ -56,3 +83,5 @@ networks:
 volumes:
   node_modules:
     name: valen-node-modules
+  db_data:
+    name: valen-db-data

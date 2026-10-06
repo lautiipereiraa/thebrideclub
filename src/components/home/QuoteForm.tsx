@@ -1,14 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import { Check, Send } from "lucide-react";
+import { useActionState, useState } from "react";
+import { AlertCircle, Check, Send } from "lucide-react";
+import Link from "next/link";
+import { enviarConsulta } from "@/actions/consultas";
+import { esExitoso } from "@/types/api";
 import { destinations } from "@/data/destinations";
 import { serviceTiers } from "@/data/service-tiers";
 import { experiences } from "@/data/experiences";
 
 export function QuoteForm() {
-  const [sent, setSent] = useState(false);
+  const [resultado, accion, enviando] = useActionState(enviarConsulta, null);
   const [chosen, setChosen] = useState<string[]>([]);
+  const enviada = resultado !== null && esExitoso(resultado);
+  const error = resultado !== null && !esExitoso(resultado) ? resultado.message : null;
 
   function toggleExperience(id: string) {
     setChosen((current) =>
@@ -18,12 +23,7 @@ export function QuoteForm() {
     );
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSent(true);
-  }
-
-  if (sent) {
+  if (enviada) {
     return (
       <div className="rounded-2xl border border-tone-300 bg-tone-50 p-12 text-center">
         <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-tone-200 text-wine-deep">
@@ -38,7 +38,7 @@ export function QuoteForm() {
         </p>
         <button
           type="button"
-          onClick={() => setSent(false)}
+          onClick={() => window.location.reload()}
           className="btn-outline mt-8"
         >
           Cargar otra consulta
@@ -49,7 +49,7 @@ export function QuoteForm() {
 
   return (
     <form
-      onSubmit={handleSubmit}
+      action={accion}
       className="rounded-2xl border border-tone-300 bg-tone-50 p-8 sm:p-12"
     >
       <div className="grid gap-6 sm:grid-cols-2">
@@ -178,6 +178,10 @@ export function QuoteForm() {
         </div>
       </div>
 
+      {chosen.map((id) => (
+        <input key={id} type="hidden" name="experiencias" value={id} />
+      ))}
+
       <div className="mt-8">
         <label className="label-base" htmlFor="quote-message">
           Contanos un poco más
@@ -191,13 +195,33 @@ export function QuoteForm() {
         />
       </div>
 
-      <button type="submit" className="btn-primary mt-8 w-full sm:w-auto">
+      {error ? (
+        <p
+          role="alert"
+          className="mt-8 flex items-start gap-3 rounded-xl border border-wine/30 bg-tone-200 px-4 py-3 text-sm text-wine-deep"
+        >
+          <AlertCircle size={18} strokeWidth={1.6} className="mt-0.5 shrink-0" />
+          {error}
+        </p>
+      ) : null}
+
+      <button
+        type="submit"
+        disabled={enviando}
+        className="btn-primary mt-8 w-full disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+      >
         <Send size={16} strokeWidth={1.5} />
-        Crear mi despedida
+        {enviando ? "Enviando..." : "Crear mi despedida"}
       </button>
 
-      <p className="mt-4 text-xs text-muted">
-        Te respondemos dentro de las 24 horas hábiles. Sin compromiso.
+      <p className="mt-4 text-xs leading-relaxed text-muted">
+        Te respondemos dentro de las 24 horas hábiles. Sin compromiso. Usamos tus
+        datos solo para responderte y armar la propuesta; podés pedirnos que los
+        borremos cuando quieras. Ver la{" "}
+        <Link href="/privacidad" className="underline underline-offset-2 hover:text-wine">
+          política de privacidad
+        </Link>
+        .
       </p>
     </form>
   );
