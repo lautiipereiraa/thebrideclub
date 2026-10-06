@@ -1,37 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  /* Paleta de The Bride Club: rosa + el rojo del logo.
-     Los tonos se llaman `tone-*` a proposito, sin nombrar el color: la paleta ya
-     cambio varias veces (rosa claro -> rosa oscuro -> beige -> rosa) y con el
-     nombre atado al color cada cambio obligaba a renombrar todo el codigo. Para
-     cambiar la paleta ahora alcanza con los valores de aca abajo.
-     La rampa va de mas claro a mas oscuro:
-       tone-50   tarjetas (mas claro que la pagina)
-       tone-100  fondo de la pagina
+  /* Paleta institucional de The Bride Club (manual de marca).
+     Combinacion principal: fondo crema + elementos en bordo. Los tonos tierra
+     quedan para detalles y variantes, sin competir con el bordo en una misma
+     pieza. Los tonos se llaman `tone-*` a proposito, sin nombrar el color:
+     cambiar la paleta es tocar solo este archivo.
+       tone-50   tarjetas (apenas mas claro que la pagina)
+       tone-100  crema institucional #FBF1DF — fondo de la pagina
        tone-200  secciones y chips
        tone-300  secciones fuertes  <- el fondo mas oscuro que lleva texto
-       tone-400  solo bordes y lineas, nunca lleva texto encima
-     Regla del rojo, porque el rojo del logo es vivo y sobre rosa oscuro pierde
-     contraste: `wine` va en el logo, los fondos y el texto grande (>=24px);
-     **todo el texto chico en rojo usa `wine-deep`**. En el otro sentido, sobre
-     `bg-wine` los claros suben un escalon (tone-200 -> tone-50). Peor contraste
-     real del conjunto: 4.56. */
-  --color-tone-50: #f4dbe1;
-  --color-tone-100: #eac6d0;
-  --color-tone-200: #e3b4c0;
-  --color-tone-300: #d8a2b0;
-  --color-tone-400: #c6889a;
-  --color-wine: #9e1a20;
-  --color-wine-soft: #b32831;
-  --color-wine-deep: #6e1016;
-  --color-accent: #7a3341;
-  --color-ink: #3a1a20;
-  --color-muted: #593b43;
+       tone-400  nude #D3A29D — solo bordes y lineas, nunca texto encima
+     El bordo oficial es oscuro, asi que a diferencia de la etapa rosa **sirve
+     tambien para texto chico** (7.67 en el peor fondo). `wine-deep` queda para
+     titulos. Peor contraste real del conjunto: 4.81. */
+  --color-tone-50: #fffbf2;
+  --color-tone-100: #fbf1df;
+  --color-tone-200: #f4e8d3;
+  --color-tone-300: #ebdcc0;
+  --color-tone-400: #d3a29d;
+  --color-wine: #830c0f;
+  --color-wine-soft: #9b1216;
+  --color-wine-deep: #5c0809;
+  --color-terracota: #9b6048;
+  --color-accent: #7e4c39;
+  --color-ink: #3a2925;
+  --color-muted: #574039;
+  --color-warm: #665c55;
 
-  --font-display: var(--font-cormorant);
+  --font-display: var(--font-bodoni);
   --font-logo: var(--font-bodoni);
-  --font-sans: var(--font-jost);
+  --font-sans: var(--font-montserrat);
 }
 
 @layer base {
@@ -51,7 +50,7 @@
   h3,
   h4 {
     font-family: var(--font-display), ui-serif, Georgia, serif;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: -0.01em;
   }
 
@@ -71,7 +70,7 @@
   }
 
   .eyebrow {
-    @apply text-[0.68rem] font-medium uppercase tracking-[0.34em] text-wine-deep;
+    @apply text-[0.68rem] font-medium uppercase tracking-[0.34em] text-wine;
   }
 
   .eyebrow-light {
@@ -105,11 +104,11 @@
   }
 
   .btn-outline {
-    @apply border border-wine-deep/30 text-wine-deep hover:border-wine hover:bg-wine hover:text-tone-50;
+    @apply border border-wine/35 text-wine hover:border-wine hover:bg-wine hover:text-tone-50;
   }
 
   .btn-light {
-    @apply bg-tone-50 text-wine-deep hover:bg-tone-200;
+    @apply bg-tone-50 text-wine hover:bg-tone-200;
   }
 
   .card {

@@ -8,11 +8,11 @@ export function ServiceTiers() {
       <div className="container-page">
         <SectionHeading
           eyebrow="Niveles de servicio"
-          title="Tres formas de vivir el mismo viaje"
-          description="Todos los niveles incluyen la organización completa. Lo que cambia es cuánto queremos que ustedes tengan que pensar."
+          title="Dos formas de vivir el mismo viaje"
+          description="Los dos niveles incluyen la organización completa. Lo que cambia es cuánto queremos que ustedes tengan que pensar."
         />
 
-        <div className="mt-20 grid gap-8 lg:grid-cols-3">
+        <div className="mx-auto mt-20 grid max-w-4xl gap-8 lg:grid-cols-2">
           {serviceTiers.map((tier) => (
             <TierCard key={tier.id} tier={tier} />
           ))}

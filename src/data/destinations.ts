@@ -3,7 +3,8 @@ import type { Destination } from "@/types/travel";
 export const destinations: Destination[] = [
   {
     id: "salta",
-    photo: "/fotos/destino-salta.jpg",
+    photo: "/destinos/salta.jpg",
+    kit: { photo: "/kits/salta.jpg", items: "Mantita y botella térmica" },
     name: "Salta y Cafayate",
     region: "Valles Calchaquíes, Salta, Argentina",
     productName: "Wine & Sunset Experience",
@@ -33,7 +34,8 @@ export const destinations: Destination[] = [
   },
   {
     id: "patagonia",
-    photo: "/fotos/destino-patagonia.jpg",
+    photo: "/destinos/patagonia.jpg",
+    kit: { photo: "/kits/patagonia.jpg", items: "Gorrito de lana y taza" },
     name: "Villa La Angostura",
     region: "Villa La Angostura y Bariloche, Argentina",
     productName: "Nature Luxury Escape",
@@ -63,7 +65,8 @@ export const destinations: Destination[] = [
   },
   {
     id: "carilo",
-    photo: "/fotos/destino-carilo.jpg",
+    photo: "/destinos/carilo.jpg",
+    kit: { photo: "/kits/carilo.jpg", items: "Gorra y manta de playa" },
     name: "Cariló",
     region: "Buenos Aires, Argentina",
     productName: "Beach House Escape",
@@ -90,7 +93,8 @@ export const destinations: Destination[] = [
   },
   {
     id: "buzios",
-    photo: "/fotos/destino-buzios.jpg",
+    photo: "/destinos/buzios.jpg",
+    kit: { photo: "/kits/buzios.jpg", items: "Gorra y toalla" },
     name: "Búzios",
     region: "Río de Janeiro, Brasil",
     productName: "Beach Bride Escape",
@@ -117,7 +121,8 @@ export const destinations: Destination[] = [
   },
   {
     id: "nueva-york",
-    photo: "/fotos/destino-nueva-york.jpg",
+    photo: "/destinos/nueva-york.jpg",
+    kit: { photo: "/kits/nueva-york.jpg", items: "Tote bag y portapasaporte" },
     name: "Nueva York",
     region: "Estados Unidos",
     productName: "The Ultimate Girls Trip",

@@ -5,10 +5,17 @@ export type TravelStyleId =
   | "aventura"
   | "naturaleza";
 
+/** Kit de bienvenida que recibe cada grupo, distinto según el destino. */
+export interface WelcomeKit {
+  photo: string;
+  items: string;
+}
+
 export interface Destination {
   id: string;
   name: string;
   photo: string;
+  kit: WelcomeKit;
   region: string;
   productName: string;
   focus: string;

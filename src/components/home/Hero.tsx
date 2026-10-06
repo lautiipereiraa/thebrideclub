@@ -1,61 +1,62 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BrandLogo } from "@/components/ui/BrandLogo";
 import { destinations } from "@/data/destinations";
-import { experiences } from "@/data/experiences";
+
+const datos = [
+  { etiqueta: "Destinos", valor: String(destinations.length) },
+  { etiqueta: "Grupos", valor: "6 a 20" },
+  { etiqueta: "Coordinación", valor: "24/7" },
+];
 
 export function Hero() {
   return (
-    <section className="relative">
-      <Image
-        src="/fotos/hero.jpg"
-        alt="Tres amigas mirando el mar durante un viaje"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-wine-deep/70" />
+    <>
+      {/* Fondo crema y marca en bordó: es la aplicación principal del manual. */}
+      <section className="bg-tone-100">
+        <div className="container-page flex min-h-[70vh] flex-col items-center justify-center py-24 text-center">
+          {/* Sin el isologo: la marca ya está grande en la barra de arriba. */}
+          <h1 className="font-display text-4xl italic text-wine sm:text-5xl lg:text-6xl">
+            El viaje antes del sí
+          </h1>
 
-      <div className="container-page relative flex min-h-[calc(100vh-5rem)] flex-col items-center justify-center py-24 text-center">
-        <BrandLogo size="lg" tone="light" />
+          <p className="lead mt-7 max-w-xl">
+            Diseñamos viajes personalizados para celebrar a la novia junto a sus
+            amigas. Ustedes disfrutan, nosotras organizamos.
+          </p>
 
-        <h1 className="title-lg mt-12 max-w-3xl text-tone-50">
-          Tu despedida de soltera, convertida en una experiencia inolvidable.
-        </h1>
+          <div className="mt-11 flex flex-col gap-3 sm:flex-row">
+            <Link href="#cotizar" className="btn-primary">
+              Diseñar mi experiencia
+            </Link>
+            <Link href="#destinos" className="btn-outline">
+              Ver destinos
+            </Link>
+          </div>
 
-        <p className="mt-7 max-w-xl text-base leading-relaxed text-tone-200 sm:text-lg">
-          Diseñamos viajes personalizados para celebrar a la novia junto a sus amigas.
-        </p>
-
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-          <Link href="#cotizar" className="btn-primary">
-            Diseñar mi experiencia
-          </Link>
-          <Link href="#destinos" className="btn-light">
-            Ver destinos
-          </Link>
+          <dl className="mt-20 grid w-full max-w-lg grid-cols-3 gap-8 border-t border-tone-400/60 pt-9">
+            {datos.map((dato) => (
+              <div key={dato.etiqueta}>
+                <dt className="small-caps text-accent">{dato.etiqueta}</dt>
+                <dd className="mt-2 font-display text-3xl font-medium text-wine">
+                  {dato.valor}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
+      </section>
 
-        <dl className="mt-20 grid w-full max-w-lg grid-cols-3 gap-8 border-t border-tone-50/25 pt-9">
-          <div>
-            <dt className="small-caps text-tone-300">Destinos</dt>
-            <dd className="mt-2 font-display text-3xl font-medium text-tone-50">
-              {destinations.length}
-            </dd>
-          </div>
-          <div>
-            <dt className="small-caps text-tone-300">Experiencias</dt>
-            <dd className="mt-2 font-display text-3xl font-medium text-tone-50">
-              {experiences.length}
-            </dd>
-          </div>
-          <div>
-            <dt className="small-caps text-tone-300">Coordinación</dt>
-            <dd className="mt-2 font-display text-3xl font-medium text-tone-50">24/7</dd>
-          </div>
-        </dl>
+      {/* La proporción crece con la pantalla hasta llegar a la de la foto (8/3),
+          así en escritorio se ve entera y en celular el recorte respeta las caras. */}
+      <div className="relative aspect-3/2 sm:aspect-2/1 lg:aspect-8/3">
+        <Image
+          src="/fotos/portada-brindis.jpg"
+          alt="Cuatro amigas brindando en la playa al atardecer"
+          fill
+          sizes="100vw"
+          className="object-cover object-[50%_38%]"
+        />
       </div>
-    </section>
+    </>
   );
 }

@@ -2,8 +2,8 @@ import type { ServiceTier } from "@/types/travel";
 
 export const serviceTiers: ServiceTier[] = [
   {
-    id: "esencial",
-    name: "Esencial",
+    id: "essential",
+    name: "Essential",
     positioning: "Lo importante resuelto: dónde dormir, cómo moverse y qué hacer.",
     fromPrice: 620,
     featured: false,
@@ -11,22 +11,9 @@ export const serviceTiers: ServiceTier[] = [
       "Alojamiento seleccionado para el grupo",
       "Todos los traslados, incluido aeropuerto",
       "Actividades principales del destino reservadas",
-      "Itinerario día por día",
+      "Itinerario día por día en la app",
+      "Kit de bienvenida del destino",
       "Asistencia al viajero",
-    ],
-  },
-  {
-    id: "premium",
-    name: "Premium",
-    positioning: "El Esencial más la mesa reservada y alguien atrás de cada detalle.",
-    fromPrice: 1200,
-    featured: true,
-    includes: [
-      "Todo lo del nivel Esencial",
-      "Gastronomía curada: cenas y reservas confirmadas",
-      "Noche de fiesta con mesa y entradas incluidas",
-      "Coordinadora asignada antes y durante el viaje",
-      "Decoración de bienvenida en la habitación de la novia",
     ],
   },
   {
@@ -34,15 +21,17 @@ export const serviceTiers: ServiceTier[] = [
     name: "Signature",
     positioning: "El viaje entero producido. Ustedes solo aparecen.",
     fromPrice: 2800,
-    featured: false,
+    featured: true,
     includes: [
-      "Todo lo del nivel Premium",
+      "Todo lo del nivel Essential",
       "Villa privada exclusiva para el grupo",
-      "Día de barco privado",
+      "Gastronomía curada: cenas y reservas confirmadas",
+      "Noche de fiesta con mesa y entradas incluidas",
       "Chef y bartender a domicilio",
       "Chofer disponible durante toda la estadía",
       "Fotógrafo y videógrafo profesional",
-      "Dos coordinadoras y asistencia 24/7",
+      "Decoración de bienvenida en la habitación de la novia",
+      "Coordinadora asignada y asistencia 24/7",
     ],
   },
 ];

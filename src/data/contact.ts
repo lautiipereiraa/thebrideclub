@@ -1,10 +1,13 @@
 export const contact = {
-  whatsappNumber: "5491100000000",
-  whatsappDisplay: "+54 9 11 0000 0000",
-  email: "hola@thebrideclub.com",
-  instagram: "thebrideclub",
+  whatsappNumber: "5491136521433",
+  whatsappDisplay: "+54 9 11 3652 1433",
+  instagram: "thebrideclub.arg",
+  tiktok: "thebride.club",
 };
 
 export const whatsappLink = `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(
-  "¡Hola! Quiero armar una despedida con The Bride Club.",
+  "Hola, quiero consultar para una cotización para una despedida de soltera.",
 )}`;
+
+export const instagramLink = `https://www.instagram.com/${contact.instagram}/`;
+export const tiktokLink = `https://www.tiktok.com/@${contact.tiktok}`;

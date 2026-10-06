@@ -1,57 +1,81 @@
+import Image from "next/image";
+
 interface BrandLogoProps {
   size?: "sm" | "md" | "lg";
   tone?: "wine" | "light";
-  layout?: "stacked" | "inline";
-  withCaptions?: boolean;
+  layout?: "stacked" | "inline" | "mark";
+  /** Descarga la imagen de entrada en vez de esperar a que entre en pantalla. */
+  priority?: boolean;
 }
 
-const wordmarkSizes = {
-  sm: "text-[1.05rem]",
-  md: "text-3xl",
-  lg: "text-[2.6rem] sm:text-6xl lg:text-7xl",
-};
+/** Ancho del isologo completo por tamaño. El archivo es 1280x646. */
+const anchosCompleto = { sm: 220, md: 380, lg: 560 };
 
-const captionSizes = {
-  sm: "text-[0.48rem] tracking-[0.34em]",
-  md: "text-[0.58rem] tracking-[0.4em]",
-  lg: "text-[0.6rem] sm:text-[0.68rem] tracking-[0.42em]",
-};
+/** Alto del logo compacto por tamaño. El archivo es 1280x500. */
+const altosCompacto = { sm: 44, md: 58, lg: 76 };
+
+/** Alto de la ilustración sola por tamaño. El archivo es 700x738. */
+const altosMarca = { sm: 38, md: 50, lg: 68 };
 
 export function BrandLogo({
   size = "md",
   tone = "wine",
   layout = "stacked",
-  withCaptions = true,
+  priority = false,
 }: BrandLogoProps) {
-  const color = tone === "light" ? "text-tone-200" : "text-wine";
-  const captionColor = tone === "light" ? "text-tone-300" : "text-wine/70";
-  const wordmark = `font-logo font-black uppercase leading-[0.82] tracking-[-0.015em] ${wordmarkSizes[size]}`;
+  const sufijo = tone === "light" ? "crema" : "bordo";
 
-  if (layout === "inline") {
+  /**
+   * `mark` es solo la ilustración de la novia. Se usa cuando no entra el nombre
+   * —la barra de arriba al bajar por la página—, porque la figura sola sigue
+   * identificando la marca aunque sea chica.
+   */
+  if (layout === "mark") {
+    const alto = altosMarca[size];
     return (
-      <span className={`${wordmark} ${color}`}>The Bride Club</span>
+      <Image
+        src={`/marca/chica-${sufijo}.png`}
+        alt="The Bride Club"
+        width={700}
+        height={738}
+        priority={priority}
+        sizes={`${Math.round(alto)}px`}
+        style={{ height: alto, width: "auto" }}
+      />
     );
   }
 
+  /**
+   * `inline` usa el logo **sin las dos bajadas**: en una barra de 80px de alto,
+   * "Agencia de viajes" y "Viajes para despedidas de soltera" quedarían de unos
+   * pocos píxeles. Conserva el nombre y la ilustración, que es lo que identifica
+   * la marca de un vistazo.
+   */
+  if (layout === "inline") {
+    const alto = altosCompacto[size];
+    return (
+      <Image
+        src={`/marca/logo-compacto-${sufijo}.png`}
+        alt="The Bride Club"
+        width={1280}
+        height={500}
+        priority={priority}
+        sizes={`${Math.round(alto * 2.56)}px`}
+        style={{ height: alto, width: "auto" }}
+      />
+    );
+  }
+
+  const ancho = anchosCompleto[size];
   return (
-    <div className={`flex flex-col items-center ${color}`}>
-      {withCaptions ? (
-        <p className={`${captionSizes[size]} font-medium uppercase ${captionColor}`}>
-          Agencia de viajes
-        </p>
-      ) : null}
-
-      <p className={`${wordmark} mt-5 text-center`}>
-        The
-        <br />
-        Bride Club
-      </p>
-
-      {withCaptions ? (
-        <p className={`mt-6 ${captionSizes[size]} font-medium uppercase ${captionColor}`}>
-          Despedidas de soltera
-        </p>
-      ) : null}
-    </div>
+    <Image
+      src={`/marca/logo-${sufijo}.png`}
+      alt="The Bride Club · Agencia de viajes · Viajes para despedidas de soltera"
+      width={1280}
+      height={646}
+      priority={size === "lg"}
+      sizes={`(max-width: 640px) 90vw, ${ancho}px`}
+      style={{ width: ancho, maxWidth: "90vw", height: "auto" }}
+    />
   );
 }

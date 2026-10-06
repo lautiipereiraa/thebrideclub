@@ -10,29 +10,31 @@ interface DestinationCardProps {
 export function DestinationCard({ destination }: DestinationCardProps) {
   return (
     <article className="overflow-hidden rounded-3xl border border-tone-300 bg-tone-50">
-      <div className="grid lg:grid-cols-5">
-        <div className="relative min-h-72 lg:col-span-2">
+      <div className="grid items-center lg:grid-cols-5">
+        {/* La portada trae el nombre y el logo compuestos adentro, en distinto lugar
+            en cada destino. Por eso se muestra **entera**: cualquier recorte le
+            comería el texto. Va con su proporción natural (4/5) y centrada. */}
+        <div className="p-6 sm:p-8 lg:col-span-2">
           <Image
             src={destination.photo}
             alt={`${destination.name}, ${destination.region}`}
-            fill
-            sizes="(min-width: 1024px) 40vw, 100vw"
-            className="object-cover"
+            width={900}
+            height={1125}
+            sizes="(min-width: 1024px) 38vw, (min-width: 640px) 90vw, 100vw"
+            className="h-auto w-full rounded-2xl"
           />
-          <div className="absolute inset-0 bg-linear-to-t from-wine-deep/85 via-wine-deep/25 to-transparent" />
-          <div className="absolute inset-x-0 bottom-0 p-8 sm:p-9">
-            <h3 className="font-display text-4xl leading-tight text-tone-50">
-              {destination.name}
-            </h3>
-            <p className="mt-1 text-sm text-tone-200">{destination.region}</p>
-            <p className="mt-4 font-display text-2xl italic text-tone-50">
-              {destination.productName}
-            </p>
-          </div>
         </div>
 
-        <div className="p-9 sm:p-11 lg:col-span-3">
-          <div className="flex flex-wrap items-center gap-2">
+        <div className="p-9 pt-2 sm:p-11 sm:pt-2 lg:col-span-3 lg:pt-11">
+          <h3 className="font-display text-3xl leading-tight text-wine-deep sm:text-4xl">
+            {destination.name}
+          </h3>
+          <p className="mt-1.5 text-sm text-muted">{destination.region}</p>
+          <p className="mt-4 font-display text-2xl italic text-wine">
+            {destination.productName}
+          </p>
+
+          <div className="mt-7 flex flex-wrap items-center gap-2">
             {destination.nights ? (
               <span className="flex items-center gap-1.5 rounded-full border border-wine/25 px-3 py-1 text-[0.68rem] uppercase tracking-[0.16em] text-wine">
                 <Moon size={11} strokeWidth={1.5} />
@@ -42,7 +44,7 @@ export function DestinationCard({ destination }: DestinationCardProps) {
             {destination.styles.map((style) => (
               <span
                 key={style}
-                className="rounded-full bg-tone-200 px-3 py-1 text-[0.68rem] uppercase tracking-[0.16em] text-wine-deep"
+                className="rounded-full bg-tone-200 px-3 py-1 text-[0.68rem] uppercase tracking-[0.16em] text-wine"
               >
                 {travelStyleNames[style]}
               </span>
