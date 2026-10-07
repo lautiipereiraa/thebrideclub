@@ -1,9 +1,9 @@
 import type { TravelStyleId } from "@/types/travel";
 
 /**
- * Los estilos quedaron como etiquetas descriptivas de cada destino. La seccion
- * que los listaba con descripcion propia fue reemplazada por `Experiences`;
- * el texto de aquellas descripciones esta en docs/removido-2026-09-12/.
+ * Los estilos son las etiquetas que lleva cada destino y las opciones del
+ * formulario de cotizacion. No tienen seccion propia: el texto de las
+ * descripciones que tenian esta en docs/removido-2026-09-12/.
  */
 export const travelStyleNames: Record<TravelStyleId, string> = {
   fiesta: "Fiesta",
@@ -12,3 +12,8 @@ export const travelStyleNames: Record<TravelStyleId, string> = {
   aventura: "Aventura",
   naturaleza: "Naturaleza",
 };
+
+/** Los mismos estilos como lista, para los chips del formulario. */
+export const travelStyleOptions = (
+  Object.keys(travelStyleNames) as TravelStyleId[]
+).map((id) => ({ id, name: travelStyleNames[id] }));

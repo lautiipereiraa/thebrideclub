@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { CalendarDays, MessageSquare, Users } from "lucide-react";
 import { destinations } from "@/data/destinations";
-import { experiences } from "@/data/experiences";
 import { serviceTiers } from "@/data/service-tiers";
+import { travelStyleNames } from "@/data/travel-styles";
 import { listarArrepentimientos } from "@/lib/arrepentimientos";
 import { listarConsultas } from "@/lib/consultas";
 
@@ -16,7 +16,6 @@ export const dynamic = "force-dynamic";
 
 const nombreDestino = new Map(destinations.map((d) => [d.id, d.name]));
 const nombreNivel = new Map(serviceTiers.map((t) => [t.id, t.name]));
-const nombreExperiencia = new Map(experiences.map((e) => [e.id, e.name]));
 
 const formatoFecha = new Intl.DateTimeFormat("es-AR", {
   dateStyle: "long",
@@ -94,14 +93,14 @@ export default async function ConsultasPage() {
                   </div>
                 </dl>
 
-                {consulta.experiencias.length > 0 ? (
+                {consulta.estilos.length > 0 ? (
                   <ul className="mt-6 flex flex-wrap gap-2">
-                    {consulta.experiencias.map((id) => (
+                    {consulta.estilos.map((id) => (
                       <li
                         key={id}
                         className="rounded-full bg-tone-200 px-3 py-1 text-[0.68rem] uppercase tracking-[0.14em] text-wine-deep"
                       >
-                        {nombreExperiencia.get(id) ?? id}
+                        {travelStyleNames[id as keyof typeof travelStyleNames] ?? id}
                       </li>
                     ))}
                   </ul>

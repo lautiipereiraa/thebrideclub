@@ -39,7 +39,7 @@ function asegurarEsquema(): Promise<void> {
            nivel         text,
            personas      integer,
            fecha_viaje   text,
-           experiencias  text[]      NOT NULL DEFAULT '{}',
+           estilos       text[]      NOT NULL DEFAULT '{}',
            mensaje       text,
            atendida      boolean     NOT NULL DEFAULT false
          )`,

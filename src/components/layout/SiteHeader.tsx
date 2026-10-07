@@ -7,7 +7,6 @@ import { BrandLogo } from "@/components/ui/BrandLogo";
 
 const navLinks = [
   { href: "/#nosotras", label: "Nosotras" },
-  { href: "/#experiencias", label: "Experiencias" },
   { href: "/#destinos", label: "Destinos" },
   { href: "/#niveles", label: "Niveles" },
   { href: "/caja", label: "La caja" },

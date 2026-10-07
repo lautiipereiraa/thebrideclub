@@ -5,7 +5,7 @@ import type { Consulta, ConsultaNueva } from "@/types/consulta";
 export async function guardarConsulta(consulta: ConsultaNueva): Promise<void> {
   await consultar(
     `INSERT INTO consultas
-       (nombre, contacto, destino, nivel, personas, fecha_viaje, experiencias, mensaje)
+       (nombre, contacto, destino, nivel, personas, fecha_viaje, estilos, mensaje)
      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
     [
       consulta.nombre,
@@ -14,7 +14,7 @@ export async function guardarConsulta(consulta: ConsultaNueva): Promise<void> {
       consulta.nivel,
       consulta.personas,
       consulta.fechaViaje,
-      consulta.experiencias,
+      consulta.estilos,
       consulta.mensaje,
     ],
   );
@@ -23,7 +23,7 @@ export async function guardarConsulta(consulta: ConsultaNueva): Promise<void> {
 export async function listarConsultas(): Promise<Consulta[]> {
   return consultar<Consulta & Record<string, unknown>>(
     `SELECT id, creada_en, nombre, contacto, destino, nivel, personas,
-            fecha_viaje, experiencias, mensaje, atendida
+            fecha_viaje, estilos, mensaje, atendida
        FROM consultas
       ORDER BY creada_en DESC
       LIMIT 500`,

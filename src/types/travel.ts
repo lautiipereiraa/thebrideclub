@@ -28,20 +28,6 @@ export interface Destination {
   hotels?: string[];
 }
 
-export type DestinationId = string;
-
-export interface Experience {
-  id: string;
-  name: string;
-  photo: string;
-  promise: string;
-  destinationIds: DestinationId[];
-  duration: string;
-  stay: string;
-  doing: string[];
-  bride: string;
-}
-
 export interface ServiceTier {
   id: string;
   name: string;

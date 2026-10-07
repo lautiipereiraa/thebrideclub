@@ -7,7 +7,7 @@ import { enviarConsulta } from "@/actions/consultas";
 import { esExitoso } from "@/types/api";
 import { destinations } from "@/data/destinations";
 import { serviceTiers } from "@/data/service-tiers";
-import { experiences } from "@/data/experiences";
+import { travelStyleOptions } from "@/data/travel-styles";
 
 export function QuoteForm() {
   const [resultado, accion, enviando] = useActionState(enviarConsulta, null);
@@ -15,7 +15,7 @@ export function QuoteForm() {
   const enviada = resultado !== null && esExitoso(resultado);
   const error = resultado !== null && !esExitoso(resultado) ? resultado.message : null;
 
-  function toggleExperience(id: string) {
+  function toggleEstilo(id: string) {
     setChosen((current) =>
       current.includes(id)
         ? current.filter((value) => value !== id)
@@ -156,22 +156,22 @@ export function QuoteForm() {
       </div>
 
       <div className="mt-8">
-        <p className="label-base">Tipo de experiencia</p>
+        <p className="label-base">Estilo del viaje</p>
         <div className="flex flex-wrap gap-3">
-          {experiences.map((experience) => {
-            const active = chosen.includes(experience.id);
+          {travelStyleOptions.map((estilo) => {
+            const active = chosen.includes(estilo.id);
             return (
               <button
-                key={experience.id}
+                key={estilo.id}
                 type="button"
-                onClick={() => toggleExperience(experience.id)}
+                onClick={() => toggleEstilo(estilo.id)}
                 className={`rounded-full border px-5 py-2 text-sm transition-all duration-200 ${
                   active
                     ? "border-wine bg-wine text-tone-50"
                     : "border-tone-400 text-muted hover:border-wine/40 hover:text-wine"
                 }`}
               >
-                {experience.name}
+                {estilo.name}
               </button>
             );
           })}
@@ -179,7 +179,7 @@ export function QuoteForm() {
       </div>
 
       {chosen.map((id) => (
-        <input key={id} type="hidden" name="experiencias" value={id} />
+        <input key={id} type="hidden" name="estilos" value={id} />
       ))}
 
       <div className="mt-8">

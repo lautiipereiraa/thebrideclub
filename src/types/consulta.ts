@@ -7,7 +7,7 @@ export interface Consulta {
   nivel: string | null;
   personas: number | null;
   fecha_viaje: string | null;
-  experiencias: string[];
+  estilos: string[];
   mensaje: string | null;
   atendida: boolean;
 }
@@ -19,6 +19,6 @@ export interface ConsultaNueva {
   nivel: string | null;
   personas: number | null;
   fechaViaje: string | null;
-  experiencias: string[];
+  estilos: string[];
   mensaje: string | null;
 }

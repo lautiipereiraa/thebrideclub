@@ -2,8 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { destinations } from "@/data/destinations";
-import { experiences } from "@/data/experiences";
 import { serviceTiers } from "@/data/service-tiers";
+import { travelStyleNames } from "@/data/travel-styles";
 import { guardarConsulta } from "@/lib/consultas";
 import type { ActionResult } from "@/types/api";
 
@@ -11,7 +11,7 @@ const LARGO = { nombre: 120, contacto: 160, mensaje: 2000, fecha: 20 };
 
 const destinosValidos = new Set([...destinations.map((d) => d.id), "otro"]);
 const nivelesValidos = new Set([...serviceTiers.map((t) => t.id), "no-se"]);
-const experienciasValidas = new Set(experiences.map((e) => e.id));
+const estilosValidos = new Set(Object.keys(travelStyleNames));
 
 function texto(formData: FormData, campo: string, max: number): string | null {
   const valor = formData.get(campo);
@@ -54,10 +54,10 @@ export async function enviarConsulta(
       ? personasCrudo
       : null;
 
-  const experienciasElegidas = formData
-    .getAll("experiencias")
+  const estilosElegidos = formData
+    .getAll("estilos")
     .filter((valor): valor is string => typeof valor === "string")
-    .filter((valor) => experienciasValidas.has(valor));
+    .filter((valor) => estilosValidos.has(valor));
 
   try {
     await guardarConsulta({
@@ -67,7 +67,7 @@ export async function enviarConsulta(
       nivel,
       personas,
       fechaViaje: texto(formData, "date", LARGO.fecha),
-      experiencias: experienciasElegidas,
+      estilos: estilosElegidos,
       mensaje: texto(formData, "message", LARGO.mensaje),
     });
   } catch (error) {

@@ -20,11 +20,6 @@ export function SiteFooter() {
           <p className="eyebrow">Navegación</p>
           <ul className="mt-4 space-y-2 text-sm text-muted">
             <li>
-              <Link href="/#experiencias" className="transition-colors hover:text-wine">
-                Experiencias
-              </Link>
-            </li>
-            <li>
               <Link href="/#destinos" className="transition-colors hover:text-wine">
                 Destinos
               </Link>
