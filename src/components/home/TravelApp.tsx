@@ -99,8 +99,8 @@ export function TravelApp() {
                   {[
                     { name: "Juli", state: "Al día", done: true },
                     { name: "Caro", state: "Al día", done: true },
-                    { name: "Flor", state: "Falta USD 480", done: false },
-                    { name: "Mica", state: "Falta USD 950", done: false },
+                    { name: "Flor", state: "Falta $ 480.000", done: false },
+                    { name: "Mica", state: "Falta $ 950.000", done: false },
                   ].map((row) => (
                     <li
                       key={row.name}

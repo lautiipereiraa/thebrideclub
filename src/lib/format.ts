@@ -1,7 +1,8 @@
-export function formatUsd(amount: number): string {
+/** Precios en pesos argentinos, sin centavos: son valores de referencia. */
+export function formatArs(amount: number): string {
   return new Intl.NumberFormat("es-AR", {
     style: "currency",
-    currency: "USD",
+    currency: "ARS",
     maximumFractionDigits: 0,
   }).format(amount);
 }

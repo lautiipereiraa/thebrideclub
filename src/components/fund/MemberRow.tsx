@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Check, Plus, Trash2 } from "lucide-react";
-import { formatUsd } from "@/lib/format";
+import { formatArs } from "@/lib/format";
 import type { FundMember } from "@/types/fund";
 
 interface MemberRowProps {
@@ -44,8 +44,8 @@ export function MemberRow({
             ) : null}
           </div>
           <p className="mt-1 text-sm text-muted">
-            Pagó {formatUsd(member.paid)}
-            {settled ? "" : ` · le falta ${formatUsd(remaining)}`}
+            Pagó {formatArs(member.paid)}
+            {settled ? "" : ` · le falta ${formatArs(remaining)}`}
           </p>
         </div>
 

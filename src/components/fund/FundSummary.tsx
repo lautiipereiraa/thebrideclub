@@ -1,7 +1,7 @@
 "use client";
 
 import { FundProgressBar } from "@/components/fund/FundProgressBar";
-import { formatDate, formatUsd } from "@/lib/format";
+import { formatDate, formatArs } from "@/lib/format";
 import type { GroupFund } from "@/types/fund";
 
 interface FundSummaryProps {
@@ -44,20 +44,20 @@ export function FundSummary({ fund }: FundSummaryProps) {
           <dt className="text-[0.7rem] font-medium uppercase tracking-[0.16em] text-tone-100">
             Costo total
           </dt>
-          <dd className="mt-1 font-display text-2xl font-medium">{formatUsd(total)}</dd>
+          <dd className="mt-1 font-display text-2xl font-medium">{formatArs(total)}</dd>
         </div>
         <div>
           <dt className="text-[0.7rem] font-medium uppercase tracking-[0.16em] text-tone-100">
             Ya pagado
           </dt>
-          <dd className="mt-1 font-display text-2xl font-medium">{formatUsd(collected)}</dd>
+          <dd className="mt-1 font-display text-2xl font-medium">{formatArs(collected)}</dd>
         </div>
         <div>
           <dt className="text-[0.7rem] font-medium uppercase tracking-[0.16em] text-tone-100">
             Falta
           </dt>
           <dd className="mt-1 font-display text-2xl font-medium text-tone-100">
-            {formatUsd(remaining)}
+            {formatArs(remaining)}
           </dd>
         </div>
         <div>
@@ -71,7 +71,7 @@ export function FundSummary({ fund }: FundSummaryProps) {
       </dl>
 
       <p className="mt-8 text-sm text-tone-50">
-        {formatUsd(fund.totalPerPerson)} por persona · cada una paga su parte por
+        {formatArs(fund.totalPerPerson)} por persona · cada una paga su parte por
         separado.
       </p>
     </div>

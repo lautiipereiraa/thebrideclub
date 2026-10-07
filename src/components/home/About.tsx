@@ -47,8 +47,7 @@ export function About() {
 
           <p className="mt-9 border-t border-tone-300 pt-6 text-sm leading-relaxed text-muted">
             Viajamos con grupos de 6 a 20 amigas. Las despedidas son nuestro viaje
-            principal, pero con el mismo equipo organizamos otras celebraciones entre
-            mujeres.
+            principal, aunque también organizamos otras celebraciones para mujeres.
           </p>
         </Reveal>
       </div>

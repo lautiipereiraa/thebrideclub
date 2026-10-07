@@ -3,15 +3,18 @@ import type { Destination } from "@/types/travel";
 export const destinations: Destination[] = [
   {
     id: "salta",
+    nights: 3,
+    prices: { essential: 1831250, signature: 2981250 },
     photo: "/destinos/salta.jpg",
     kit: { photo: "/kits/salta.jpg", items: "Mantita y botella térmica" },
     name: "Salta y Cafayate",
     region: "Valles Calchaquíes, Salta, Argentina",
-    productName: "Wine & Sunset Experience",
+    productName: "Wine & Desert Escape",
     focus: "Naturaleza, gastronomía, cultura y vinos de altura.",
     why: "Frente a Mendoza, que ya está muy posicionado, ofrecemos bodegas boutique con paisajes únicos, cultura regional y experiencias exclusivas.",
-    nights: 3,
-    idealFor: "Grupos que buscan algo más sofisticado y tranquilo.",
+    idealFor:
+      "Quienes buscan una despedida sofisticada, gastronómica y vinculada con el paisaje y la cultura del destino.",
+    hotels: { essential: "Patios de Cafayate Wine Hotel", signature: "Grace Cafayate Hotel" },
     styles: ["gastronomia", "naturaleza", "bienestar"],
     attractions: [
       "Cafayate y los Valles Calchaquíes",
@@ -30,18 +33,21 @@ export const destinations: Destination[] = [
       "Cena especial de despedida",
       "Experiencias de bienestar",
     ],
-    hotels: ["House of Jasmines", "Grace Cafayate", "Altalaluna"],
   },
   {
     id: "patagonia",
+    nights: 3,
+    prices: { essential: 2006250, signature: 3531250 },
     photo: "/destinos/patagonia.jpg",
     kit: { photo: "/kits/patagonia.jpg", items: "Gorrito de lana y taza" },
     name: "Villa La Angostura",
     region: "Villa La Angostura y Bariloche, Argentina",
-    productName: "Nature Luxury Escape",
+    productName: "Bride Patagonia Retreat",
     focus: "Naturaleza, lujo y conexión.",
     why: "Permite diferenciarse de las despedidas tradicionales: es una experiencia más exclusiva y emocional.",
-    idealFor: "Una novia que busca una experiencia elegante y memorable.",
+    idealFor:
+      "Quienes buscan una despedida elegante, íntima y emocional, vinculada con la naturaleza y el bienestar.",
+    hotels: { essential: "El Faro Boutique Hotel & Spa", signature: "Las Balsas Relais & Châteaux" },
     styles: ["naturaleza", "bienestar", "aventura"],
     attractions: [
       "Lagos",
@@ -61,10 +67,11 @@ export const destinations: Destination[] = [
       "Degustaciones",
       "Picnic en la naturaleza",
     ],
-    hotels: ["Las Balsas", "Luma Casa de Montaña", "Correntoso Lake & River"],
   },
   {
     id: "carilo",
+    nights: 3,
+    prices: { essential: 1387500, signature: 2543750 },
     photo: "/destinos/carilo.jpg",
     kit: { photo: "/kits/carilo.jpg", items: "Gorra y manta de playa" },
     name: "Cariló",
@@ -72,7 +79,9 @@ export const destinations: Destination[] = [
     productName: "Beach House Escape",
     focus: "Una escapada nacional premium, cercana y relajada.",
     why: "Permite ofrecer una despedida sin grandes costos de traslado, manteniendo una percepción exclusiva.",
-    idealFor: "Grupos que buscan una experiencia más íntima, elegante y accesible.",
+    idealFor:
+      "Quienes buscan una despedida cercana, relajada y elegante, combinando playa, naturaleza, gastronomía y momentos de celebración.",
+    hotels: { essential: "Cariló Village", signature: "Cariló Forest" },
     styles: ["bienestar", "naturaleza", "gastronomia"],
     attractions: [
       "Playa",
@@ -93,6 +102,8 @@ export const destinations: Destination[] = [
   },
   {
     id: "buzios",
+    nights: 3,
+    prices: { essential: 2575000, signature: 4000000 },
     photo: "/destinos/buzios.jpg",
     kit: { photo: "/kits/buzios.jpg", items: "Gorra y toalla" },
     name: "Búzios",
@@ -101,7 +112,8 @@ export const destinations: Destination[] = [
     focus: "Playa, exclusividad y celebración.",
     why: "Tiene una imagen más sofisticada que otros destinos de playa brasileños y combina descanso, gastronomía y entretenimiento.",
     idealFor:
-      "Grupos que buscan una despedida internacional sin llegar al costo de destinos europeos.",
+      "Quienes buscan una despedida internacional que combine playa, descanso, gastronomía y celebración, con posibilidad de incorporar actividades nocturnas.",
+    hotels: { essential: "Pousada Pedra da Laguna", signature: "Casas Brancas Boutique Hotel & Spa" },
     styles: ["fiesta", "aventura", "bienestar"],
     attractions: [
       "Playas",
@@ -121,6 +133,8 @@ export const destinations: Destination[] = [
   },
   {
     id: "nueva-york",
+    nights: 6,
+    prices: { essential: 5775000, signature: 7912500 },
     photo: "/destinos/nueva-york.jpg",
     kit: { photo: "/kits/nueva-york.jpg", items: "Tote bag y portapasaporte" },
     name: "Nueva York",
@@ -128,7 +142,9 @@ export const destinations: Destination[] = [
     productName: "The Ultimate Girls Trip",
     focus: "Una experiencia urbana, internacional y aspiracional.",
     why: "Representa un producto de mayor valor, asociado al lujo, las compras, la gastronomía y las experiencias icónicas.",
-    idealFor: "Segmento medio-alto y alto que busca una experiencia única.",
+    idealFor:
+      "Quienes buscan una despedida internacional, urbana, aspiracional y memorable.",
+    hotels: { essential: "Pod 51", signature: "The Knickerbocker Hotel" },
     styles: ["fiesta", "gastronomia"],
     attractions: [
       "Broadway",

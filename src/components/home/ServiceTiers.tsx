@@ -22,8 +22,9 @@ export function ServiceTiers() {
         </div>
 
         <p className="mt-12 text-center text-xs leading-relaxed text-muted">
-          Los valores son de referencia y varían según destino, temporada, cantidad de
-          noches y tamaño del grupo.
+          Valores estimativos por persona, calculados sobre un grupo de ocho. El precio
+          arranca en Cariló y sube según el destino; cada propuesta se cotiza aparte
+          según las fechas, la disponibilidad y cuántas sean.
         </p>
       </div>
     </section>

@@ -14,7 +14,7 @@ export function DestinationsSection() {
         <SectionHeading
           eyebrow="Nuestros productos"
           title={`${capitalize(count)} destinos, ${count} formas de despedirse`}
-          description="Cada uno armado de punta a punta: alojamiento, traslados, gastronomía y experiencias."
+          description="Cada uno armado por completo: alojamiento, traslados, gastronomía y experiencias."
         />
 
         <div className="mt-16 space-y-8">

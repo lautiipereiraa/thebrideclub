@@ -85,7 +85,7 @@ export function FundSetupForm({ onCreate }: FundSetupFormProps) {
 
         <div>
           <label className="label-base" htmlFor="fund-total">
-            Cuánto sale por persona (USD)
+            Cuánto sale por persona
           </label>
           <input
             id="fund-total"

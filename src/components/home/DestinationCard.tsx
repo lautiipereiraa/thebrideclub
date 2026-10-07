@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Moon } from "lucide-react";
 import { travelStyleNames } from "@/data/travel-styles";
+import { formatArs } from "@/lib/format";
 import type { Destination } from "@/types/travel";
 
 interface DestinationCardProps {
@@ -55,6 +56,31 @@ export function DestinationCard({ destination }: DestinationCardProps) {
             {destination.focus}
           </p>
 
+          <dl className="mt-7 grid gap-5 rounded-2xl border border-tone-300 bg-tone-100 p-6 sm:grid-cols-2">
+            <div>
+              <dt className="small-caps text-accent">Essential</dt>
+              <dd className="mt-2 font-display text-2xl font-medium text-wine-deep">
+                {formatArs(destination.prices.essential)}
+              </dd>
+              <dd className="mt-1.5 text-xs leading-relaxed text-muted">
+                {destination.hotels.essential}
+              </dd>
+            </div>
+            <div>
+              <dt className="small-caps text-accent">Signature</dt>
+              <dd className="mt-2 font-display text-2xl font-medium text-wine">
+                {formatArs(destination.prices.signature)}
+              </dd>
+              <dd className="mt-1.5 text-xs leading-relaxed text-muted">
+                {destination.hotels.signature}
+              </dd>
+            </div>
+            <p className="text-xs leading-relaxed text-muted sm:col-span-2">
+              Por persona, estimado sobre un grupo de 8. Varía según la temporada, la
+              disponibilidad y cuántas sean.
+            </p>
+          </dl>
+
           <div className="mt-8 grid gap-8 border-t border-tone-300 pt-8 sm:grid-cols-2">
             <div>
               <p className="small-caps text-accent">Atractivos</p>
@@ -83,11 +109,6 @@ export function DestinationCard({ destination }: DestinationCardProps) {
               <span className="small-caps text-accent">Ideal para</span>
               <span className="mt-2 block">{destination.idealFor}</span>
             </p>
-            {destination.hotels ? (
-              <p className="mt-4 text-xs leading-relaxed text-muted">
-                Alojamientos de referencia: {destination.hotels.join(" · ")}
-              </p>
-            ) : null}
           </div>
         </div>
       </div>

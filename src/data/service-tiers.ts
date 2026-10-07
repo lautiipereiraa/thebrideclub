@@ -5,7 +5,7 @@ export const serviceTiers: ServiceTier[] = [
     id: "essential",
     name: "Essential",
     positioning: "Lo importante resuelto: dónde dormir, cómo moverse y qué hacer.",
-    fromPrice: 620,
+    fromPrice: 1387500,
     featured: false,
     includes: [
       "Alojamiento seleccionado para el grupo",
@@ -20,7 +20,7 @@ export const serviceTiers: ServiceTier[] = [
     id: "signature",
     name: "Signature",
     positioning: "El viaje entero producido. Ustedes solo aparecen.",
-    fromPrice: 2800,
+    fromPrice: 2543750,
     featured: true,
     includes: [
       "Todo lo del nivel Essential",

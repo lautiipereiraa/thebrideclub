@@ -15,7 +15,7 @@ const problems = [
   {
     icon: CreditCard,
     title: "Nadie sabe cuánto sale",
-    text: "El presupuesto se arma de a pedazos y siempre aparece un gasto que no estaba previsto.",
+    text: "El costo se arma por partes y el número final recién se conoce cuando ya está todo reservado.",
   },
 ];
 
@@ -25,8 +25,7 @@ const differentials = [
   "Itinerario a medida, no un paquete estándar",
   "Proveedores seleccionados uno por uno",
   "Precio final por persona, sin sorpresas",
-  "Cada una paga por separado, en cuotas",
-  "Una coordinadora responde por el grupo entero",
+  "Cada una paga por separado",
 ];
 
 export function PainPoint() {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { formatUsd } from "@/lib/format";
+import { formatArs } from "@/lib/format";
 import type { ServiceTier } from "@/types/travel";
 
 interface TierCardProps {
@@ -14,7 +14,7 @@ export function TierCard({ tier }: TierCardProps) {
     <article
       className={`relative flex h-full flex-col rounded-2xl border p-9 transition-all duration-300 ${
         featured
-          ? "border-wine bg-wine text-tone-50 shadow-xl shadow-wine/20 lg:-translate-y-4"
+          ? "border-wine bg-wine text-tone-50 shadow-xl shadow-wine/20"
           : "border-tone-300 bg-tone-50 hover:border-wine/30"
       }`}
     >
@@ -50,7 +50,7 @@ export function TierCard({ tier }: TierCardProps) {
           Desde
         </p>
         <p className="font-display text-4xl font-medium">
-          {formatUsd(tier.fromPrice)}
+          {formatArs(tier.fromPrice)}
           <span
             className={`ml-2 font-sans text-xs ${
               featured ? "text-tone-50" : "text-muted"
