@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 import { destinations } from "@/data/destinations";
 
 export function WelcomeKits() {
@@ -13,11 +14,9 @@ export function WelcomeKits() {
         />
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {destinations.map((destination) => (
-            <article
-              key={destination.id}
-              className="overflow-hidden rounded-3xl border border-tone-300 bg-tone-50"
-            >
+          {destinations.map((destination, i) => (
+            <Reveal key={destination.id} delay={(i % 3) * 0.1} className="h-full">
+              <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-tone-300 bg-tone-50">
               <div className="relative aspect-4/5">
                 <Image
                   src={destination.kit.photo}
@@ -31,18 +30,21 @@ export function WelcomeKits() {
                 <p className="small-caps text-accent">{destination.name}</p>
                 <p className="mt-2 text-sm text-ink">{destination.kit.items}</p>
               </div>
-            </article>
+              </article>
+            </Reveal>
           ))}
 
-          <article className="flex flex-col justify-center rounded-3xl border border-dashed border-wine/25 bg-tone-50 px-8 py-10 text-center">
+          <Reveal delay={0.2} className="h-full">
+            <article className="flex h-full flex-col justify-center rounded-3xl border border-dashed border-wine/25 bg-tone-50 px-8 py-10 text-center">
             <h3 className="font-display text-2xl text-wine-deep">
               Y para la novia, la gorra con velo
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               El detalle que la distingue del resto del grupo durante todo el viaje.
-              Va en todos los destinos.
-            </p>
-          </article>
+                Va en todos los destinos.
+              </p>
+            </article>
+          </Reveal>
         </div>
       </div>
     </section>

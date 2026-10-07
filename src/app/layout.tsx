@@ -3,6 +3,7 @@ import { Bodoni_Moda, Montserrat } from "next/font/google";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { MotionProvider } from "@/components/ui/MotionProvider";
 import "./globals.css";
 
 // Cada peso que use una clase de Tailwind tiene que estar declarado aca: si no,
@@ -37,10 +38,17 @@ export default function RootLayout({
       className={`${bodoni.variable} ${montserrat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <SiteHeader />
-        <div className="flex flex-1 flex-col">{children}</div>
-        <SiteFooter />
-        <WhatsAppButton />
+        {/* Si el navegador no ejecuta JavaScript, las animaciones nunca arrancan y
+            el contenido quedaría invisible. Esto lo muestra igual. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
+        <MotionProvider>
+          <SiteHeader />
+          <div className="flex flex-1 flex-col">{children}</div>
+          <SiteFooter />
+          <WhatsAppButton />
+        </MotionProvider>
       </body>
     </html>
   );

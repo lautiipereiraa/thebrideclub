@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 import { DestinationCard } from "@/components/home/DestinationCard";
 import { destinations } from "@/data/destinations";
 import { capitalize, spellOut } from "@/lib/format";
@@ -18,7 +19,9 @@ export function DestinationsSection() {
 
         <div className="mt-16 space-y-8">
           {destinations.map((destination) => (
-            <DestinationCard key={destination.id} destination={destination} />
+            <Reveal key={destination.id}>
+              <DestinationCard destination={destination} />
+            </Reveal>
           ))}
         </div>
 

@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/ui/Reveal";
 import { CreditCard, MessageSquareX, Wallet } from "lucide-react";
 
 const problems = [
@@ -33,7 +34,7 @@ export function PainPoint() {
     <section id="propuesta" className="section bg-tone-100">
       <div className="container-page">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
-          <div>
+          <Reveal>
             <p className="eyebrow">El problema</p>
             <h2 className="title-lg mt-4 text-wine-deep">
               Organizar una despedida termina siendo un trabajo de tiempo completo.
@@ -60,9 +61,9 @@ export function PainPoint() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
-          <div className="relative">
+          <Reveal delay={0.15} className="relative">
             <div className="sticky top-28 rounded-3xl bg-wine p-10 text-tone-50 sm:p-12">
               <p className="eyebrow-light">Nuestra propuesta</p>
               <h3 className="title-lg mt-4 text-tone-50">
@@ -80,7 +81,7 @@ export function PainPoint() {
                 ))}
               </ul>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

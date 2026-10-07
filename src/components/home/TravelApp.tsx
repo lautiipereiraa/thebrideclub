@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/ui/Reveal";
 import Link from "next/link";
 import { BellRing, CalendarDays, MapPin, PiggyBank, Vote } from "lucide-react";
 
@@ -33,7 +34,8 @@ export function TravelApp() {
   return (
     <section id="app" className="section bg-tone-100">
       <div className="container-page">
-        <div className="overflow-hidden rounded-3xl border border-tone-300 bg-tone-200">
+        <Reveal>
+          <div className="overflow-hidden rounded-3xl border border-tone-300 bg-tone-200">
           <div className="grid gap-10 p-10 sm:p-14 lg:grid-cols-2 lg:gap-16">
             <div>
               <p className="eyebrow">Exclusivo de The Bride Club</p>
@@ -118,8 +120,9 @@ export function TravelApp() {
                 cada grupo cuando su viaje está confirmado.
               </p>
             </div>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

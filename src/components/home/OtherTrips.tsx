@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Cake, Compass, Heart, Sparkles, Users } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 
 const propuestas = [
   {
@@ -40,7 +41,8 @@ export function OtherTrips() {
           description="La despedida es nuestro viaje principal, pero el mismo equipo organiza otras celebraciones entre mujeres. Cada propuesta se arma distinta, según el motivo y quiénes viajan."
         />
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl bg-tone-400/50 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal className="mt-16">
+          <div className="grid gap-px overflow-hidden rounded-2xl bg-tone-400/50 sm:grid-cols-2 lg:grid-cols-3">
           {propuestas.map((propuesta) => (
             <div key={propuesta.name} className="bg-tone-50 p-8">
               <propuesta.icon
@@ -67,7 +69,8 @@ export function OtherTrips() {
               Contanos qué querés celebrar
             </Link>
           </div>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

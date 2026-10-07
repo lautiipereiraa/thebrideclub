@@ -1,4 +1,5 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 import { TierCard } from "@/components/home/TierCard";
 import { serviceTiers } from "@/data/service-tiers";
 
@@ -13,8 +14,10 @@ export function ServiceTiers() {
         />
 
         <div className="mx-auto mt-20 grid max-w-4xl gap-8 lg:grid-cols-2">
-          {serviceTiers.map((tier) => (
-            <TierCard key={tier.id} tier={tier} />
+          {serviceTiers.map((tier, i) => (
+            <Reveal key={tier.id} delay={i * 0.12} className="h-full">
+              <TierCard tier={tier} />
+            </Reveal>
           ))}
         </div>
 

@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/ui/Reveal";
 import Image from "next/image";
 import { Check } from "lucide-react";
 
@@ -12,17 +13,19 @@ export function About() {
   return (
     <section id="nosotras" className="section bg-tone-100">
       <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-        <div className="relative aspect-4/3 overflow-hidden rounded-3xl">
+        <Reveal>
+          <div className="relative aspect-4/3 overflow-hidden rounded-3xl">
           <Image
             src="/fotos/nosotras.jpg"
             alt="Grupo de amigas brindando alrededor de una mesa"
             fill
             sizes="(min-width: 1024px) 45vw, 100vw"
-            className="object-cover"
-          />
-        </div>
+              className="object-cover"
+            />
+          </div>
+        </Reveal>
 
-        <div>
+        <Reveal delay={0.15}>
           <p className="eyebrow">Quiénes somos</p>
           <h2 className="title-lg mt-4 text-wine-deep">
             Celebrar, sin tener que organizar.
@@ -47,7 +50,7 @@ export function About() {
             principal, pero con el mismo equipo organizamos otras celebraciones entre
             mujeres.
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

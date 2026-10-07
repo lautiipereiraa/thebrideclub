@@ -1,4 +1,5 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 import { QuoteForm } from "@/components/home/QuoteForm";
 
 export function QuoteSection() {
@@ -11,9 +12,9 @@ export function QuoteSection() {
           description="Completá el formulario y te armamos una propuesta con precio final por persona, sin cargo y sin compromiso."
         />
 
-        <div className="mx-auto mt-14 max-w-3xl">
+        <Reveal className="mx-auto mt-14 max-w-3xl">
           <QuoteForm />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

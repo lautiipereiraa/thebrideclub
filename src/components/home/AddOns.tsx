@@ -1,4 +1,5 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 import { addOns } from "@/data/add-ons";
 
 export function AddOns() {
@@ -11,7 +12,8 @@ export function AddOns() {
           description="Se suman a cualquier nivel de servicio y se cotizan aparte, según lo que el grupo quiera agregar."
         />
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl bg-tone-400/60 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal className="mt-16">
+          <div className="grid gap-px overflow-hidden rounded-2xl bg-tone-400/60 sm:grid-cols-2 lg:grid-cols-4">
           {addOns.map((addOn) => (
             <div
               key={addOn.id}
@@ -23,7 +25,8 @@ export function AddOns() {
               </p>
             </div>
           ))}
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

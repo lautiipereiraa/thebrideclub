@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Reveal } from "@/components/ui/Reveal";
 import { destinations } from "@/data/destinations";
 
 const datos = [
@@ -15,32 +16,36 @@ export function Hero() {
       <section className="bg-tone-100">
         <div className="container-page flex min-h-[70vh] flex-col items-center justify-center py-24 text-center">
           {/* Sin el isologo: la marca ya está grande en la barra de arriba. */}
-          <h1 className="font-display text-4xl italic text-wine sm:text-5xl lg:text-6xl">
-            El viaje antes del sí
-          </h1>
+          <Reveal>
+            <h1 className="font-display text-4xl italic text-wine sm:text-5xl lg:text-6xl">
+              El viaje antes del sí
+            </h1>
+          </Reveal>
 
-          <p className="lead mt-7 max-w-xl">
-            Diseñamos viajes personalizados para celebrar a la novia junto a sus
-            amigas. Ustedes disfrutan, nosotras organizamos.
-          </p>
+          <Reveal delay={0.12}>
+            <p className="lead mt-7 max-w-xl">
+              Diseñamos viajes personalizados para celebrar a la novia junto a sus
+              amigas. Ustedes disfrutan, nosotras organizamos.
+            </p>
+          </Reveal>
 
-          <div className="mt-11 flex flex-col gap-3 sm:flex-row">
+          <Reveal delay={0.24} className="mt-11 flex flex-col gap-3 sm:flex-row">
             <Link href="#cotizar" className="btn-primary">
               Diseñar mi experiencia
             </Link>
             <Link href="#destinos" className="btn-outline">
               Ver destinos
             </Link>
-          </div>
+          </Reveal>
 
           <dl className="mt-20 grid w-full max-w-lg grid-cols-3 gap-8 border-t border-tone-400/60 pt-9">
-            {datos.map((dato) => (
-              <div key={dato.etiqueta}>
+            {datos.map((dato, i) => (
+              <Reveal key={dato.etiqueta} delay={0.36 + i * 0.1}>
                 <dt className="small-caps text-accent">{dato.etiqueta}</dt>
                 <dd className="mt-2 font-display text-3xl font-medium text-wine">
                   {dato.valor}
                 </dd>
-              </div>
+              </Reveal>
             ))}
           </dl>
         </div>

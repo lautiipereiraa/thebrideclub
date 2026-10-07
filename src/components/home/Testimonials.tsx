@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Quote } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function Testimonials() {
   return (
@@ -11,7 +12,8 @@ export function Testimonials() {
           title="Historias de novias que celebraron con The Bride Club"
         />
 
-        <div className="mx-auto mt-14 max-w-2xl rounded-3xl border border-dashed border-wine/25 bg-tone-50 px-8 py-14 text-center">
+        <Reveal className="mx-auto mt-14 max-w-2xl">
+          <div className="rounded-3xl border border-dashed border-wine/25 bg-tone-50 px-8 py-14 text-center">
           <Quote
             size={30}
             strokeWidth={1.5}
@@ -25,8 +27,9 @@ export function Testimonials() {
           </p>
           <Link href="#cotizar" className="btn-outline mt-8">
             Quiero ser de las primeras
-          </Link>
-        </div>
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

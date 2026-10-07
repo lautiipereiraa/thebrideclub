@@ -1,4 +1,5 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 
 const steps = [
   {
@@ -33,7 +34,8 @@ export function HowItWorks() {
           description="Sin planillas compartidas y sin que ninguna quede a cargo de todo."
         />
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl bg-tone-400/60 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal className="mt-16">
+          <div className="grid gap-px overflow-hidden rounded-2xl bg-tone-400/60 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step) => (
             <div key={step.number} className="bg-tone-100 p-8">
               <p className="font-display text-4xl text-tone-400">{step.number}</p>
@@ -41,7 +43,8 @@ export function HowItWorks() {
               <p className="mt-3 text-sm leading-relaxed text-muted">{step.text}</p>
             </div>
           ))}
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
