@@ -19,8 +19,34 @@ Reglas de comunicación:
 - Después de cada cambio, decile **dónde mirarlo** y qué va a ver distinto. La URL
   que se le pasa es **https://dev.thebrideclub.com.ar** (nunca la del puerto
   3005: ese puerto viene filtrado desde afuera). Los cambios NO llegan solos a
-  **https://thebrideclub.com.ar**, que es producción: se publican aparte (ver
-  `~/prod/valen/docker-compose.yml`), y solo cuando lo pide Lautaro.
+  **https://thebrideclub.com.ar**, que es producción: se publican aparte, con un
+  **pase a producción** (ver abajo). Lo pueden pedir Valen o Lautaro.
+
+## Pase a producción
+
+`develop` = **dev.thebrideclub.com.ar**, `main` = **thebrideclub.com.ar**. Cuando
+Valen pide "pasar a producción" / "publicar" / "que se vea en la página de verdad",
+**se hace y listo**: no le preguntes nada técnico ni le pidas confirmar pasos. Su
+pedido ya autoriza commitear, mergear a `main` y pushear para este flujo. Al
+terminar, decile en una línea que ya está en https://thebrideclub.com.ar.
+
+1. Commitear lo pendiente en `develop` (commits temáticos, sin prefijo) y
+   `git push origin develop`.
+2. **Revisar cambios de base**: `git diff main develop -- src/lib/db.ts`. El
+   `CREATE TABLE IF NOT EXISTS` no altera tablas existentes: cualquier columna
+   nueva o renombrada se aplica a mano en `valen-prod-db` **antes** de levantar la
+   imagen nueva. Pendiente desde el 2026-10-07:
+   `ALTER TABLE consultas RENAME COLUMN experiencias TO estilos`.
+3. Avanzar `main` sin tocar el working copy (el dev server corre de acá):
+   `git fetch . develop:main && git push origin main`. Es fast-forward: `main` no
+   tiene commits propios. Si alguna vez no lo es, parar y avisarle a Lautaro.
+4. Buildear con el working copy limpio (HEAD == `main`, así el label no miente):
+   `docker build --target runner -t valen-prod:<AAAA-MM-DD>-<sha corto> --label
+   "org.opencontainers.image.revision=$(git rev-parse HEAD)" .`
+5. Poner ese tag en `APP_VERSION` de `~/prod/valen/.env` y `docker compose up -d`
+   en `~/prod/valen`. Anotar el tag anterior: el rollback es volver a ponerlo.
+6. Verificar: las páginas en 200 en https://thebrideclub.com.ar, que el formulario
+   guarde y que `/consultas` siga pidiendo clave.
 
 ## Qué es
 
@@ -51,4 +77,5 @@ reiniciar nada.
 - Antes de escribir código de Next, leer la guía correspondiente en
   `node_modules/next/dist/docs/` — esta versión tiene cambios respecto a lo conocido.
 - Commits **sin prefijo** tipo `feat:`/`fix:`.
-- Nunca commitear ni pushear sin OK explícito.
+- Nunca commitear ni pushear sin OK explícito, salvo en un pase a producción
+  pedido por Valen (ver arriba).
