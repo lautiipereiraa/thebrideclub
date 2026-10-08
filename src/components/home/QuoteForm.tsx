@@ -9,7 +9,11 @@ import { destinations } from "@/data/destinations";
 import { serviceTiers } from "@/data/service-tiers";
 import { travelStyleOptions } from "@/data/travel-styles";
 
-export function QuoteForm() {
+interface QuoteFormProps {
+  defaultDestination?: string;
+}
+
+export function QuoteForm({ defaultDestination = "" }: QuoteFormProps) {
   const [resultado, accion, enviando] = useActionState(enviarConsulta, null);
   const [chosen, setChosen] = useState<string[]>([]);
   const enviada = resultado !== null && esExitoso(resultado);
@@ -87,7 +91,7 @@ export function QuoteForm() {
             id="quote-destination"
             name="destination"
             required
-            defaultValue=""
+            defaultValue={defaultDestination}
             className="input-base"
           >
             <option value="" disabled>
