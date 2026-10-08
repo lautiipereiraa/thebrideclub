@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* El modo oscuro lo elige la persona con el botón del header, no el sistema:
+   la cara principal de la marca es la crema. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @theme {
   /* Paleta institucional de The Bride Club (manual de marca).
      Combinacion principal: fondo crema + elementos en bordo. Los tonos tierra
@@ -31,6 +35,27 @@
   --font-display: var(--font-bodoni);
   --font-logo: var(--font-bodoni);
   --font-sans: var(--font-montserrat);
+}
+
+/* Modo oscuro: los mismos nombres con otros valores, así ningún componente
+   cambia. Los fondos pasan a bordó casi chocolate y el bordó, a rosado: lo que
+   era bordó con letra crema (botones, bandas) queda rosado con letra oscura.
+   Peor contraste real del conjunto: 8.24. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-tone-50: #2a1316;
+  --color-tone-100: #1d0b0d;
+  --color-tone-200: #241012;
+  --color-tone-300: #2f1619;
+  --color-tone-400: #6b4542;
+  --color-wine: #e9aeb2;
+  --color-wine-soft: #f0c2c5;
+  --color-wine-deep: #f7e0db;
+  --color-terracota: #d49a80;
+  --color-accent: #dcab95;
+  --color-ink: #f4e6d8;
+  --color-muted: #d6c0b5;
+  --color-warm: #c9b8ad;
 }
 
 @layer base {
@@ -65,6 +90,12 @@
   ::selection {
     background-color: var(--color-tone-300);
     color: var(--color-wine-deep);
+  }
+
+  /* Tailwind v4 deja los botones con cursor default; los links ya tienen pointer. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
   }
 }
 

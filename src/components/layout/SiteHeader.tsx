@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navLinks = [
   { href: "/#nosotras", label: "Nosotras" },
@@ -35,7 +36,7 @@ export function SiteHeader() {
       }`}
     >
       {/* Alto fijo: con el borde de abajo suma --header-height, que descuentan las secciones de pantalla completa. */}
-      <div className="container-page relative">
+      <div className="relative w-full px-6 sm:px-8 lg:px-10 xl:px-14">
         <div className="flex h-[calc(var(--header-height)-1px)] items-center justify-between gap-6">
           <div className="flex min-w-0 items-center gap-3 sm:gap-4">
             <button
@@ -54,19 +55,19 @@ export function SiteHeader() {
               aria-label="The Bride Club · Inicio"
             >
               <span
-                className="block font-logo text-2xl font-black uppercase leading-none tracking-[-0.01em] text-wine sm:text-3xl"
+                className="block whitespace-nowrap font-logo text-xl font-black uppercase leading-none tracking-[-0.01em] text-wine min-[400px]:text-2xl sm:text-3xl"
               >
                 The Bride Club
               </span>
               <span
-                className="mt-1.5 block text-[0.5rem] uppercase tracking-[0.3em] text-accent sm:text-[0.56rem] sm:tracking-[0.36em]"
+                className="mt-1.5 block whitespace-nowrap text-[0.48rem] uppercase tracking-[0.16em] text-accent min-[400px]:tracking-[0.3em] sm:text-[0.56rem] sm:tracking-[0.36em] lg:tracking-[0.24em] xl:tracking-[0.36em]"
               >
                 Viajes para despedidas de soltera
               </span>
             </Link>
           </div>
 
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden shrink-0 items-center gap-5 whitespace-nowrap lg:flex xl:gap-7">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -76,19 +77,23 @@ export function SiteHeader() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/#cotizar" className="btn-primary px-6 py-2.5">
+            <Link href="/#cotizar" className="btn-primary px-5 py-2.5">
               Diseñar mi experiencia
             </Link>
+            <ThemeToggle />
           </nav>
 
-          <button
-            type="button"
-            aria-label={open ? "Cerrar menú" : "Abrir menú"}
-            onClick={() => setOpen((value) => !value)}
-            className="shrink-0 text-wine lg:hidden"
-          >
-            {open ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="flex items-center gap-1 lg:hidden">
+            <ThemeToggle />
+            <button
+              type="button"
+              aria-label={open ? "Cerrar menú" : "Abrir menú"}
+              onClick={() => setOpen((value) => !value)}
+              className="shrink-0 text-wine"
+            >
+              {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
       </div>
 

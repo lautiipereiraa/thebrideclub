@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { MotionProvider } from "@/components/ui/MotionProvider";
+import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 // Cada peso que use una clase de Tailwind tiene que estar declarado aca: si no,
@@ -36,7 +37,12 @@ export default function RootLayout({
     <html
       lang="es"
       className={`${bodoni.variable} ${montserrat.variable} h-full antialiased`}
+      // El script de abajo puede sumar data-theme antes de hidratar.
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="min-h-full flex flex-col">
         {/* Si el navegador no ejecuta JavaScript, las animaciones nunca arrancan y
             el contenido quedaría invisible. Esto lo muestra igual. */}
