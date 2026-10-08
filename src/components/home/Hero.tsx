@@ -52,15 +52,25 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Ocupa el alto que queda. El encuadre prioriza las copas y las cabezas: lo que se recorta es la parte de abajo. */}
+      {/* Ocupa el alto que queda. El encuadre prioriza las copas y las cabezas: lo que se recorta es la parte de abajo.
+          Una foto por tema, misma escena: atardecer en claro, noche en oscuro. La oculta
+          no se descarga porque las imágenes de next/image cargan en diferido. */}
       <div className="relative min-h-56 flex-1">
         <Image
-          src="/fotos/portada-atardecer.jpg"
-          alt="Cuatro amigas de espaldas levantando sus copas frente al mar al atardecer"
+          src="/fotos/portada-velo.jpg"
+          alt="Cinco amigas de espaldas brindando frente al mar al atardecer; la novia, en el centro, lleva una gorra con velo"
           fill
           sizes="100vw"
           quality={90}
-          className="object-cover object-[50%_12%]"
+          className="object-cover object-[50%_15%] dark:hidden"
+        />
+        <Image
+          src="/fotos/portada-velo-noche.jpg"
+          alt="Cinco amigas de espaldas brindando de noche en una terraza con velas frente al mar; la novia, en el centro, lleva una gorra con velo"
+          fill
+          sizes="100vw"
+          quality={90}
+          className="hidden object-cover object-[50%_15%] dark:block"
         />
       </div>
     </section>
