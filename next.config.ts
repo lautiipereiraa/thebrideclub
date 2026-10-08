@@ -11,6 +11,9 @@ const extraDevOrigins = (process.env.EXTRA_DEV_ORIGINS ?? "")
 const nextConfig: NextConfig = {
   output: process.env.NEXT_OUTPUT === "standalone" ? "standalone" : undefined,
   allowedDevOrigins: ["localhost", "127.0.0.1", ...extraDevOrigins],
+  // 90 solo para la foto de portada, que va a pantalla completa: con 75 se nota
+  // la segunda compresión sobre un JPG que ya viene comprimido.
+  images: { qualities: [75, 90] },
 };
 
 export default nextConfig;
