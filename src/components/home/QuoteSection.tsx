@@ -2,7 +2,11 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { QuoteForm } from "@/components/home/QuoteForm";
 
-export function QuoteSection() {
+interface QuoteSectionProps {
+  defaultDestination?: string;
+}
+
+export function QuoteSection({ defaultDestination }: QuoteSectionProps) {
   return (
     <section id="cotizar" className="section bg-tone-300">
       <div className="container-page">
@@ -13,7 +17,7 @@ export function QuoteSection() {
         />
 
         <Reveal className="mx-auto mt-14 max-w-3xl">
-          <QuoteForm />
+          <QuoteForm defaultDestination={defaultDestination} />
         </Reveal>
       </div>
     </section>

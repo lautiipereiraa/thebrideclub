@@ -6,9 +6,12 @@ import type { Destination } from "@/types/travel";
 
 interface DestinationCardProps {
   destination: Destination;
+  headingLevel?: "h1" | "h3";
 }
 
-export function DestinationCard({ destination }: DestinationCardProps) {
+export function DestinationCard({ destination, headingLevel = "h3" }: DestinationCardProps) {
+  const Heading = headingLevel;
+
   return (
     <article className="overflow-hidden rounded-3xl border border-tone-300 bg-tone-50">
       <div className="grid items-center lg:grid-cols-5">
@@ -27,9 +30,9 @@ export function DestinationCard({ destination }: DestinationCardProps) {
         </div>
 
         <div className="p-9 pt-2 sm:p-11 sm:pt-2 lg:col-span-3 lg:pt-11">
-          <h3 className="font-display text-3xl leading-tight text-wine-deep sm:text-4xl">
+          <Heading className="font-display text-3xl leading-tight text-wine-deep sm:text-4xl">
             {destination.name}
-          </h3>
+          </Heading>
           <p className="mt-1.5 text-sm text-muted">{destination.region}</p>
           <p className="mt-4 font-display text-2xl italic text-wine">
             {destination.productName}

@@ -30,17 +30,22 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link href="/#extras" className="transition-colors hover:text-wine">
+              <Link href="/experiencia#kits" className="transition-colors hover:text-wine">
+                Kit de bienvenida
+              </Link>
+            </li>
+            <li>
+              <Link href="/experiencia#extras" className="transition-colors hover:text-wine">
                 Experiencias extra
               </Link>
             </li>
             <li>
-              <Link href="/#app" className="transition-colors hover:text-wine">
+              <Link href="/experiencia#app" className="transition-colors hover:text-wine">
                 La app del viaje
               </Link>
             </li>
             <li>
-              <Link href="/#otros-viajes" className="transition-colors hover:text-wine">
+              <Link href="/experiencia#otros-viajes" className="transition-colors hover:text-wine">
                 Otras formas de viajar
               </Link>
             </li>
