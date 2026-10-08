@@ -38,6 +38,14 @@
     scroll-behavior: smooth;
   }
 
+  html {
+    --header-height: 5rem;
+    /* proximity y no mandatory: en las secciones más altas que la pantalla el
+       scroll sigue libre y solo se acomoda cerca del borde de cada una. */
+    scroll-snap-type: y proximity;
+    scroll-padding-top: var(--header-height);
+  }
+
   body {
     background-color: var(--color-tone-100);
     color: var(--color-ink);
@@ -65,8 +73,13 @@
     @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
   }
 
+  /* Cada sección ocupa una pantalla entera debajo del header, con el contenido
+     centrado: así no asoma la sección siguiente. Las que no entran (grillas,
+     formulario) simplemente crecen. */
   .section {
-    @apply py-20 sm:py-28;
+    @apply flex flex-col justify-center py-16 sm:py-20;
+    min-height: calc(100svh - var(--header-height));
+    scroll-snap-align: start;
   }
 
   .eyebrow {
