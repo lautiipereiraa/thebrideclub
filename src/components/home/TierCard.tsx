@@ -29,8 +29,9 @@ export function TierCard({ tier }: TierCardProps) {
       >
         {tier.name}
       </h3>
+      {/* Dos renglones reservados: el precio queda a la misma altura en las dos tarjetas. */}
       <p
-        className={`mt-3 text-sm leading-relaxed ${
+        className={`mt-3 min-h-[2lh] text-sm leading-relaxed ${
           featured ? "text-tone-50" : "text-muted"
         }`}
       >
@@ -39,7 +40,7 @@ export function TierCard({ tier }: TierCardProps) {
 
       <div
         className={`mt-7 border-t pt-6 ${
-          featured ? "border-tone-50/20" : "border-tone-200"
+          featured ? "border-tone-50/20" : "border-tone-400/60"
         }`}
       >
         <p
@@ -61,7 +62,7 @@ export function TierCard({ tier }: TierCardProps) {
         </p>
       </div>
 
-      <ul className="mt-7 space-y-3 text-sm">
+      <ul className="mb-9 mt-7 space-y-3 text-sm">
         {tier.includes.map((item) => (
           <li key={item} className="flex gap-3">
             <Check
@@ -78,7 +79,7 @@ export function TierCard({ tier }: TierCardProps) {
 
       <Link
         href="#cotizar"
-        className={`mt-9 ${featured ? "btn-light" : "btn-outline"}`}
+        className={`mt-auto ${featured ? "btn-light" : "btn-outline"}`}
       >
         Quiero este nivel
       </Link>
