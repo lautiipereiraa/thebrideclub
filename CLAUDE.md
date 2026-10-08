@@ -1,6 +1,6 @@
 @AGENTS.md
 
-# valen — proyecto de tesis
+# thebrideclub — proyecto de tesis
 
 ## Con quién estás hablando
 
@@ -34,17 +34,16 @@ terminar, decile en una línea que ya está en https://thebrideclub.com.ar.
    `git push origin develop`.
 2. **Revisar cambios de base**: `git diff main develop -- src/lib/db.ts`. El
    `CREATE TABLE IF NOT EXISTS` no altera tablas existentes: cualquier columna
-   nueva o renombrada se aplica a mano en `valen-prod-db` **antes** de levantar la
-   imagen nueva. Pendiente desde el 2026-10-07:
-   `ALTER TABLE consultas RENAME COLUMN experiencias TO estilos`.
+   nueva o renombrada se aplica a mano en `thebrideclub-prod-db` **antes** de levantar la
+   imagen nueva.
 3. Avanzar `main` sin tocar el working copy (el dev server corre de acá):
    `git fetch . develop:main && git push origin main`. Es fast-forward: `main` no
    tiene commits propios. Si alguna vez no lo es, parar y avisarle a Lautaro.
 4. Buildear con el working copy limpio (HEAD == `main`, así el label no miente):
-   `docker build --target runner -t valen-prod:<AAAA-MM-DD>-<sha corto> --label
+   `docker build --target runner -t thebrideclub-prod:<AAAA-MM-DD>-<sha corto> --label
    "org.opencontainers.image.revision=$(git rev-parse HEAD)" .`
-5. Poner ese tag en `APP_VERSION` de `~/prod/valen/.env` y `docker compose up -d`
-   en `~/prod/valen`. Anotar el tag anterior: el rollback es volver a ponerlo.
+5. Poner ese tag en `APP_VERSION` de `~/prod/thebrideclub/.env` y `docker compose up -d`
+   en `~/prod/thebrideclub`. Anotar el tag anterior: el rollback es volver a ponerlo.
 6. Verificar: las páginas en 200 en https://thebrideclub.com.ar, que el formulario
    guarde y que `/consultas` siga pidiendo clave.
 

@@ -1,4 +1,4 @@
-# valen
+# thebrideclub
 
 Proyecto de tesis. Next.js 16 monolítico (App Router + TypeScript + Tailwind v4),
 corriendo en Docker.
@@ -16,7 +16,7 @@ docker compose up -d --build
   le pasa a Valen. Va por el Traefik compartido de `~/infra/proxy` (puerto 443,
   certificado de Let's Encrypt). DNS en Cloudflare, registro en gris.
 - **https://thebrideclub.com.ar** — producción. No sale de acá: corre la imagen
-  `runner` en el stack de `~/prod/valen` (ver su `docker-compose.yml` para
+  `runner` en el stack de `~/prod/thebrideclub` (ver su `docker-compose.yml` para
   buildear, promover y hacer rollback). Tiene su propia base de datos.
 - `http://148.113.167.40:3005` — puerto publicado directo. **Desde afuera viene
   filtrado**: sirve para probar desde el propio server y nada más. Por eso existe

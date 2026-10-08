@@ -6,17 +6,17 @@ import { Pool } from "pg";
  * objeto global, cada recarga abriria uno nuevo y la base se quedaria sin
  * conexiones libres.
  */
-const globalParaPool = globalThis as typeof globalThis & { poolValen?: Pool };
+const globalParaPool = globalThis as typeof globalThis & { poolTheBrideClub?: Pool };
 
 function obtenerPool(): Pool {
-  if (!globalParaPool.poolValen) {
+  if (!globalParaPool.poolTheBrideClub) {
     const connectionString = process.env.DATABASE_URL;
     if (!connectionString) {
       throw new Error("Falta la variable DATABASE_URL");
     }
-    globalParaPool.poolValen = new Pool({ connectionString, max: 5 });
+    globalParaPool.poolTheBrideClub = new Pool({ connectionString, max: 5 });
   }
-  return globalParaPool.poolValen;
+  return globalParaPool.poolTheBrideClub;
 }
 
 let esquemaListo: Promise<void> | undefined;
