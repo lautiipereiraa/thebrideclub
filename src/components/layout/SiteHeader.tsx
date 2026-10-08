@@ -9,6 +9,7 @@ const navLinks = [
   { href: "/#nosotras", label: "Nosotras" },
   { href: "/#destinos", label: "Destinos" },
   { href: "/#niveles", label: "Niveles" },
+  { href: "/experiencia", label: "Experiencia" },
   { href: "/caja", label: "La caja" },
 ];
 
@@ -33,45 +34,52 @@ export function SiteHeader() {
           : "border-b border-transparent bg-tone-100"
       }`}
     >
-      <div
-        className={`container-page relative transition-all duration-300 ${
-          scrolled ? "py-3" : "py-5"
-        }`}
-      >
-        {/* Banner: la ilustración a la izquierda y el nombre ocupando el ancho. */}
-        <div className="flex items-center gap-4 sm:gap-6">
-          <button
-            type="button"
-            onClick={() => window.location.reload()}
-            aria-label="Refrescar la página"
-            className="shrink-0 transition-opacity duration-200 hover:opacity-70"
-          >
-            <BrandLogo size={scrolled ? "sm" : "md"} layout="mark" priority />
-          </button>
+      {/* Alto fijo: con el borde de abajo suma --header-height, que descuentan las secciones de pantalla completa. */}
+      <div className="container-page relative">
+        <div className="flex h-[calc(var(--header-height)-1px)] items-center justify-between gap-6">
+          <div className="flex min-w-0 items-center gap-3 sm:gap-4">
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              aria-label="Refrescar la página"
+              className="shrink-0 transition-opacity duration-200 hover:opacity-70"
+            >
+              <BrandLogo size="md" layout="mark" priority />
+            </button>
 
-          <Link
-            href="/"
-            onClick={() => setOpen(false)}
-            className="min-w-0 flex-1"
-            aria-label="The Bride Club · Inicio"
-          >
-            <span
-              className={`block font-logo font-black uppercase leading-none tracking-[-0.01em] text-wine transition-all duration-300 ${
-                scrolled
-                  ? "text-2xl sm:text-3xl"
-                  : "text-[1.7rem] sm:text-4xl lg:text-5xl"
-              }`}
+            <Link
+              href="/"
+              onClick={() => setOpen(false)}
+              className="min-w-0"
+              aria-label="The Bride Club · Inicio"
             >
-              The Bride Club
-            </span>
-            <span
-              className={`mt-1.5 block text-[0.52rem] uppercase tracking-[0.3em] text-accent transition-all duration-300 sm:text-[0.62rem] sm:tracking-[0.42em] ${
-                scrolled ? "hidden sm:block" : "block"
-              }`}
-            >
-              Viajes para despedidas de soltera
-            </span>
-          </Link>
+              <span
+                className="block font-logo text-2xl font-black uppercase leading-none tracking-[-0.01em] text-wine sm:text-3xl"
+              >
+                The Bride Club
+              </span>
+              <span
+                className="mt-1.5 block text-[0.5rem] uppercase tracking-[0.3em] text-accent sm:text-[0.56rem] sm:tracking-[0.36em]"
+              >
+                Viajes para despedidas de soltera
+              </span>
+            </Link>
+          </div>
+
+          <nav className="hidden items-center gap-7 lg:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm text-muted transition-colors hover:text-wine"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link href="/#cotizar" className="btn-primary px-6 py-2.5">
+              Diseñar mi experiencia
+            </Link>
+          </nav>
 
           <button
             type="button"
@@ -82,25 +90,6 @@ export function SiteHeader() {
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
-
-        <nav
-          className={`hidden items-center justify-center gap-9 transition-all duration-300 lg:flex ${
-            scrolled ? "mt-3" : "mt-5"
-          }`}
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted transition-colors hover:text-wine"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link href="/#cotizar" className="btn-primary px-6 py-2.5">
-            Diseñar mi experiencia
-          </Link>
-        </nav>
       </div>
 
       {open ? (
