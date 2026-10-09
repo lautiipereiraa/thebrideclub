@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-# valen · Next.js 16 monolito — un solo Dockerfile multi-stage (dev + prod).
+# thebrideclub · Next.js 16 monolito — un solo Dockerfile multi-stage (dev + prod).
 #   dev   → next dev (Fast Refresh / Turbopack); código y node_modules por mounts.
 #   prod  → salida standalone de Next, runtime mínimo no-root.
 
