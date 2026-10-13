@@ -26,6 +26,11 @@ services:
         UID: ${UID:-1001}
         GID: ${GID:-1001}
     container_name: thebrideclub-web
+    # Tope de RAM (2026-10-13): el dev server de Turbopack acumula cache y no la
+    # libera; sin tope llego a 1.8 GB en 5 dias. Sin swap extra para que no lo
+    # esquive paginando. Si lo supera, el kernel lo mata y `restart` lo levanta.
+    mem_limit: 1g
+    memswap_limit: 1g
     environment:
       NODE_ENV: development
       DATABASE_URL: postgres://thebrideclub:${POSTGRES_PASSWORD}@db:5432/thebrideclub
