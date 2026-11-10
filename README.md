@@ -18,7 +18,7 @@ docker compose up -d --build
 - **https://thebrideclub.com.ar** — producción. No sale de acá: corre la imagen
   `runner` en el stack de `~/prod/thebrideclub` (ver su `docker-compose.yml` para
   buildear, promover y hacer rollback). Tiene su propia base de datos.
-- `http://148.113.167.40:3005` — puerto publicado directo. **Desde afuera viene
+- `http://localhost:3005` — puerto publicado directo. **Desde afuera viene
   filtrado**: sirve para probar desde el propio server y nada más. Por eso existe
   la ruta por Traefik.
 

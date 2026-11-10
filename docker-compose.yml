@@ -11,7 +11,7 @@
 # Se llega de dos formas:
 #   1. https://dev.thebrideclub.com.ar → por Traefik, puerto 443, con
 #      certificado válido. Es la que usa Valen.
-#   2. http://148.113.167.40:3005 → puerto publicado directo. Sirve para probar
+#   2. http://localhost:3005 → puerto publicado directo. Sirve para probar
 #      desde el propio server; desde afuera puede venir filtrado.
 
 name: thebrideclub-dev
